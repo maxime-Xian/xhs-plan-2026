@@ -1,0 +1,1101 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@锦霏｜设计 · 成都私宅 90 天冷启动完整方案</title><style>
+:root{--ink:#141210;--ink2:#3d362e;--muted:#8a7f70;--paper:#f4efe6;--card:#fffdf8;--line:#e0d5c4;
+--case:#2f5d50;--avoid:#c2452d;--dry:#b07d1a;--ser:#3a5a80;--caseL:#e4efe9;--avoidL:#f9e5df;--dryL:#f8eed7;--serL:#e6e9f2;
+--serif:"Songti SC","Source Han Serif SC",Georgia,serif;--sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;overflow-x:hidden}
+.wrap{max-width:940px;margin:0 auto;padding:28px 20px 70px}
+header{border-bottom:3px solid var(--ink);padding-bottom:16px;margin-bottom:20px}
+.kicker{font-size:11px;letter-spacing:.22em;color:var(--muted)}
+h1{font-family:var(--serif);font-size:clamp(23px,5.5vw,34px);margin:5px 0 8px;line-height:1.25;overflow-wrap:anywhere}
+.sub{font-size:14px;color:var(--ink2)}.sub b{color:var(--avoid)}
+.pills{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.pill{background:#efe9df;border:1px solid var(--line);border-radius:20px;padding:3px 11px;font-size:12px;color:var(--ink2)}
+.pill.hot{background:var(--avoidL);border-color:#edc9bd;color:var(--avoid);font-weight:600}
+h2.sec{font-family:var(--serif);font-size:22px;margin:32px 0 6px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.note{font-size:13px;color:var(--muted);margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:16px 18px;margin-bottom:13px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+@media(max-width:760px){.g2,.g3{grid-template-columns:minmax(0,1fr)}}
+.diag{border-left:3px solid var(--avoid);background:#fbf7f0;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.diag b{display:block;font-family:var(--serif);font-size:16px;margin-bottom:4px}
+.diag span{font-size:13.2px;color:var(--ink2)}
+.tl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:760px){.tl{grid-template-columns:minmax(0,1fr)}}
+.ph{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--ink);border-radius:9px;padding:13px 15px}
+.ph:nth-child(1){border-top-color:#8a7f70}.ph:nth-child(2){border-top-color:var(--case)}.ph:nth-child(3){border-top-color:var(--avoid)}.ph:nth-child(4){border-top-color:var(--dry)}
+.ph .d{font-size:11px;color:var(--muted);letter-spacing:.08em}
+.ph h3{font-family:var(--serif);font-size:17.5px;margin:2px 0 7px}
+.ph ul{margin-left:17px;font-size:13px;color:var(--ink2)}.ph li{margin-bottom:3px}
+.ph .goal{margin-top:8px;padding-top:7px;border-top:1px dashed var(--line);font-size:12.3px;color:var(--ink2)}
+.bar{display:flex;height:32px;border-radius:6px;overflow:hidden;border:1px solid var(--line);margin-bottom:8px}
+.bar div{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12.5px;font-weight:600}
+.bc{background:var(--case)}.ba{background:var(--avoid)}.bd{background:var(--dry)}.bv{background:var(--ser)}
+table{width:100%;border-collapse:collapse;font-size:13px;background:var(--card)}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#f2ece2;font-family:var(--serif);font-weight:600;font-size:12.6px}
+td.num{text-align:center;white-space:nowrap}
+.hi{background:#fdf3ee}
+.tblwrap{overflow-x:auto}
+ul.cl{list-style:none}ul.cl li{padding:5px 0;border-bottom:1px dashed var(--line);font-size:13.4px}
+ul.cl li:before{content:"□";color:var(--avoid);margin-right:7px;font-weight:700}
+.warn{background:#fdf3ee;border:1px solid #edc9bd;border-left:4px solid var(--avoid);border-radius:8px;padding:13px 15px;font-size:13.4px}
+.warn ul{margin:5px 0 0 17px;color:var(--ink2)}.warn li{margin-bottom:2px}
+.next{counter-reset:n}.next li{font-size:13.8px;margin-bottom:7px;list-style:none;counter-increment:n}
+.next li:before{content:counter(n);background:var(--ink);color:#fff;width:20px;height:20px;border-radius:50%;font-size:11.5px;display:inline-flex;align-items:center;justify-content:center;margin-right:9px;font-weight:700;vertical-align:2px}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:26px}
+.toc h2{font-family:var(--serif);font-size:18px;margin-bottom:9px}
+.toc ol{margin-left:19px;columns:2;column-gap:26px;font-size:13.4px}
+@media(max-width:620px){.toc ol{columns:1}}
+.toc li{margin-bottom:2px;break-inside:avoid}
+.toc a{color:var(--ink2);text-decoration:none;border-bottom:1px dotted var(--muted)}
+.day{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:18px 20px;margin-bottom:15px;break-inside:avoid}
+.day.rest{background:#faf7f1;border-style:dashed}
+.dh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:12px}
+.dh h3{font-family:var(--serif);font-size:19px}
+.dh .m{font-size:12.3px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;background:#efe9df;color:var(--ink2);margin-right:5px}
+.tc{background:var(--caseL);color:var(--case)}.ta{background:var(--avoidL);color:var(--avoid)}.td{background:var(--dryL);color:var(--dry)}.tv{background:var(--serL);color:var(--ser)}
+.blk{margin-bottom:13px}
+.bt{font-family:var(--serif);font-size:14.6px;border-left:3px solid var(--ink);padding-left:9px;margin-bottom:6px}
+.bt small{font-family:var(--sans);font-size:11px;color:var(--muted);font-weight:400}
+.titles{margin-left:19px;font-size:13.8px}.titles li{margin-bottom:4px}
+.ct{background:#f2ece2;border:1px solid var(--line);border-radius:7px;padding:10px 13px;font-family:var(--serif);font-size:17.5px;text-align:center;white-space:pre-line;letter-spacing:.04em}
+.seg{border-left:2px solid var(--line);padding:1px 0 1px 11px;margin-bottom:8px}
+.seg .st{font-size:10.8px;color:var(--muted);letter-spacing:.08em;display:block}
+.seg .sx{font-size:13.8px;white-space:pre-line}
+.seg.hl{border-left-color:var(--avoid)}.seg.hl .sx{font-weight:600}
+.script{background:#fbf8f2;border:1px solid var(--line);border-radius:7px;padding:12px 14px;font-size:13.2px;white-space:pre-wrap;line-height:1.75}
+.tags span{background:#f2ece2;border:1px solid var(--line);border-radius:20px;padding:2px 10px;font-size:12.3px;color:var(--ink2);margin:0 4px 4px 0;display:inline-block}
+.pin{background:#fdf3ee;border:1px solid #edc9bd;border-left:3px solid var(--avoid);border-radius:7px;padding:10px 13px;font-size:13.3px}
+.chk{margin-left:19px;font-size:13.3px}.chk li{margin-bottom:3px}
+.flow{margin-left:19px;font-size:13.3px}.flow li{margin-bottom:3px}
+.mat{margin-left:19px;font-size:13.3px}.mat li{margin-bottom:3px}
+.cta{background:var(--ink);color:#fff;border-radius:10px;padding:15px 18px;margin:22px 0;font-size:13.4px}
+.cta b{color:#f9c9b8}
+.copybox{background:#f2ece2;border:1px solid var(--line);border-radius:7px;padding:11px 13px;font-family:var(--serif);font-size:16px;text-align:center;letter-spacing:.03em}
+footer{border-top:1px solid var(--line);margin-top:28px;padding-top:13px;font-size:12.4px;color:var(--muted)}
+@media print{body{background:#fff}.wrap{max-width:none;padding:0}.day,.toc,.card,.ph{break-inside:avoid;page-break-inside:avoid}h2.sec{page-break-after:avoid}}
+</style></head><body><div class="wrap">
+<header>
+<div class="kicker">小红书 · 家装私宅 · 设计师 IP · 冷启动 90 天 · 完整版</div>
+<h1>@锦霏｜设计 — 成都私宅 90 天冷启动完整方案</h1>
+<div class="sub">定位：<b>成都 · 200-400㎡ 大平层 / 别墅私宅 ｜ 把酒店级的体验做进家里</b>　｜　主指标：<b>分享率 ≥0.30</b>，不考核粉丝绝对值</div>
+<div class="pills">
+<span class="pill hot">22 篇发布 + 8 个机动备料日</span>
+<span class="pill">视频 11 · 图文 11</span>
+<span class="pill">案例 11 · 避坑 7 · 干货 4</span>
+<span class="pill">痛点反共识 9 · 结果前置 8 · 清单攻略 5</span>
+<span class="pill">依据 113 条爆款实测数据重做</span>
+</div></header>
+<div class="card"><h3 style="font-family:var(--serif);font-size:16px;margin-bottom:7px">这份方案在做什么（5 句话）</h3>
+<ol style="margin-left:19px;font-size:13.6px">
+<li>账号原来只发作品集和工作日志，是给同行看的；流量来自真正要装修的高净值业主。</li>
+<li>改成定位：成都 + 200-400㎡ 大平层/别墅 + 把酒店级的体验做进家里。</li>
+<li>30 天发 22 篇，视频 11 图文 11，案例 50% / 避坑 32% / 干货 18%，另加 4 篇设计师连载。</li>
+<li>结构不是拍脑袋定的：从 113 条爆款实测数据倒推出 5 条规则（形式分轨、标题双模板、地域词下沉、主指标改分享率、干货做攻略体裁）。</li>
+<li>所有数字都是真实项目数据；没有就写【待填】，不编。</li>
+</ol></div>
+<h2 class="sec">一、爆款数据归纳（113 条实测 → 5 条结论）</h2>
+<div class="note">数据源 hot_feeds.csv：113 条、105 个账号。封面描述 / 首图文字 / 正文结构 / 标签 / 发布时间 / 图片数 / 评论区 <b>【缺】</b> —— 本轮不推测补齐。</div>
+<div class="tblwrap"><table>
+<tr><th>样本池</th><th>条数</th><th>video</th><th>点赞中位</th><th>藏赞比</th><th>分享赞比</th><th>用法</th></tr>
+<tr><td>装修避坑</td><td class="num">20</td><td class="num"><b>100%</b></td><td class="num"><b>41,937</b></td><td class="num">0.97</td><td class="num">0.07</td><td>避坑全做视频</td></tr>
+<tr><td>老房改造</td><td class="num">20</td><td class="num">90%</td><td class="num">7,415</td><td class="num">0.24</td><td class="num">0.08</td><td>一镜到底叙事</td></tr>
+<tr><td>成都装修设计</td><td class="num">20</td><td class="num">20%</td><td class="num">1,036</td><td class="num">0.94</td><td class="num">0.35</td><td>本地池小，竞争也小</td></tr>
+<tr><td>小户型装修</td><td class="num">17</td><td class="num">60%</td><td class="num">4,138</td><td class="num">0.64</td><td class="num">0.35</td><td>词库参考</td></tr>
+<tr class="hi"><td><b>大平层装修</b></td><td class="num">16</td><td class="num">30%</td><td class="num">2,787</td><td class="num">0.50</td><td class="num"><b>0.45</b></td><td>案例以图文为主</td></tr>
+<tr><td>装修设计</td><td class="num">13</td><td class="num">混合</td><td class="num">4,873</td><td class="num">0.76</td><td class="num">0.45</td><td>—</td></tr>
+</table></div>
+<div class="g3" style="margin-top:13px">
+<div class="diag"><b>① 形式分赛道</b><span>避坑 100% 视频、大平层 70% 图文、成都 80% 图文 → 本号视频 11 / 图文 11，避坑 7 篇全视频，案例 9 图文 2 视频</span></div>
+<div class="diag"><b>② 标题双模板</b><span>避坑类中位 15 字、案例类 20 字。「盘点」中位赞 97,249；「攻略/清单/指南」藏赞比 1.09；「附尺寸」分享赞比 1.02；「避坑/踩坑」中位赞 38,936</span></div>
+<div class="diag"><b>③ 地域词降权</b><span>标题带城市词 n=12 中位赞 1,707 vs 不带 n=101 中位赞 5,400；成都组内 883 vs 1,078 → 成都下沉到标签 + 正文首段 + 地理定位 + 楼盘名</span></div>
+<div class="diag"><b>④ 主指标改分享率</b><span>大平层分享赞比 0.45、小户型 0.35、成都 0.35；避坑仅 0.07。业主转发 = 发给家人或设计师定方案 = 高客单的真实前置行为</span></div>
+<div class="diag"><b>⑤ 干货做攻略体裁</b><span>「攻略/清单/指南/盘点」命中标题藏赞比 0.91-1.09（收藏超过点赞）→ 5 篇干货全改句式，封面就是清单页</span></div>
+<div class="diag"><b>⑥ 成都本地是空位</b><span>成都本地私宅内容点赞中位仅 1,036，且没有人系统做 200-400㎡ 的尺度 / 机电 / 庭院 / 地下室 / 挑空 → 这就是切口</span></div>
+</div>
+<div class="warn" style="margin-top:13px"><b>可直接抄的爆款词库</b>
+<div style="margin-top:6px;font-size:13.2px">避坑 / 踩坑（命中中位赞 38,936）｜盘点（97,249）｜攻略 / 清单 / 指南（藏赞比 1.09）｜巨详细（藏赞比 1.00）｜附尺寸（分享赞比 1.02）｜一镜到底｜roomtour｜客厅化 / 去客厅化（分享赞比 0.59）｜横厅（0.58）｜尽力了（0.61）｜恭喜（0.88）｜抄作业（藏赞比 0.91）</div>
+<div style="margin-top:6px;font-size:13.2px">疑问反问型只占爆款 4%（5/113），感叹号 29 条 —— <b>不要把提问式当主力句式</b>；emoji 仅 33% 用（弱正向，非标配）</div></div>
+<h2 class="sec">二、现状诊断与主页改造</h2>
+<div class="g3">
+<div class="diag"><b>视角错了</b><span>「作品集 + 工作日志」是给同行和甲方看的 B 端自述，流量来自高净值业主。</span></div>
+<div class="diag"><b>赛道错位</b><span>酒店 ≠ 私宅。但注意：200-400㎡ 客户自己就常住酒店，叙事要用「同频」不是「降级」。</span></div>
+<div class="diag"><b>标题没搜索词</b><span>无搜索词、无痛点、无数字、无钩子。前 5-10 篇决定账号标签。</span></div>
+</div>
+<div class="g2" style="margin-top:13px">
+<div class="card"><div class="bt" style="border:none;padding:0;margin-bottom:7px">定位公式</div>
+<div class="copybox">成都 · 200-400㎡ 大平层 / 别墅私宅设计<br>把酒店级的灯光、入户、视线、收纳，做进你家里</div>
+<table style="margin-top:10px"><tr><th>层</th><th>内容</th><th>落在哪</th></tr>
+<tr><td>地域</td><td>成都（细分到区域/楼盘）</td><td><b>标签 + 正文首段 + 地理定位</b>（不放标题）</td></tr>
+<tr><td>人群</td><td>200-400㎡ 大平层 / 小别墅业主</td><td>简介、标题客户描述、案例回访</td></tr>
+<tr><td>细分场景</td><td>灯光分层｜入户序厅｜挑空视线｜庭院半室外｜地下室采光｜机电前置｜收纳四层</td><td>栏目标签、封面话术</td></tr></table>
+<div class="bt" style="margin-top:13px">昵称 3 备选</div>
+<ul style="margin-left:19px;font-size:13.6px">
+<li><b>A（推荐）</b> 锦霏｜成都大宅设计</li>
+<li><b>B</b> 锦霏｜大平层别墅设计</li>
+<li><b>C</b> 锦霏｜私宅设计师·成都</li></ul>
+<div class="note" style="margin-top:7px">头像 = 真人 + 大平层毛坯/落地现场，自然光，人脸 ≥1/3，不用 logo / AI 生成人像 / 酒店大堂前。背景图 = 左完工实景 / 右同角度毛坯 + 定位句 + 成都。</div></div>
+<div class="card"><div class="bt" style="border:none;padding:0;margin-bottom:7px">D1 主页改造 11 项 + 旧 4 篇处理</div>
+<ul class="cl">
+<li>昵称 → 锦霏｜成都大宅设计（或备选 B/C）</li>
+<li>头像 → 真人 + 大平层现场</li>
+<li>简介 → 5 行主推版</li>
+<li>背景图 → 左完工 / 右毛坯 + 定位句</li>
+<li>旧笔记《麓野遥》3赞 → 改标题为酒店→私宅转译，首图标「酒店项目实景」</li>
+<li>旧笔记《工作日常》1赞 → 隐藏（不删），素材进 D3 / D7</li>
+<li>旧笔记《大房子》2赞 → 改标题 + 正文重排 + 补真实数据</li>
+<li>旧笔记《工作日常》4赞 → 改标题加 EP01，置顶 1 候选</li>
+<li>4 篇统一标签 → 删 B 端词，补长尾 + 官方话题 + #把酒店搬回家 + 成都</li>
+<li>置顶 3 条 → ①自我介绍 ②清单攻略(附尺寸) ③代表作+尺寸表</li>
+<li>D1 发布 → 当天发，覆盖旧标签</li></ul></div></div>
+<h2 class="sec">三、90 天节奏（4 阶段）</h2>
+<div class="tl">
+<div class="ph"><div class="d">D1 – D14</div><h3>一 · 重定位</h3><ul><li>主页三件套一次性改完</li><li>4 篇旧笔记：2 改 / 1 藏 / 1 改造</li><li>发 D1 D3 D5 D6 D7（视频 3 篇先跑通）</li><li>抓成都本地 + 全国对标建拆解表</li><li>同时谈项目授权</li></ul><div class="goal"><b>验收</b>：新笔记 ≥6（视频 ≥3）；旧笔记 4/4；≥1 篇 24h 播放 ≥500；拆解表 ≥30 行；授权表覆盖全部在手项目</div></div>
+<div class="ph"><div class="d">D15 – D42</div><h3>二 · 卡搜索</h3><ul><li>拆解表 ≥100 行 + 归纳页</li><li>每周 5 更（视频/图文 2:3）</li><li>长尾词库每周 +15</li><li>标题模板库 20 条（分三类形式）</li><li>案例带地理定位 + 正文首段带成都</li><li>攻略类做成可下载清单页</li></ul><div class="goal"><b>验收</b>：连续 3 周 ≥5 更；搜索来源 ≥30%；收藏率 ≥3%；藏赞比 ≥0.5；≥1 篇播放 ≥1000</div></div>
+<div class="ph"><div class="d">D43 – D70</div><h3>三 · 找结构</h3><ul><li>按分享率排序（案例类主指标）</li><li>Top3 结构各做 2 个变体</li><li>视频开头 A/B：换前 3 秒钩子</li><li>停掉连续 2 篇低于均值的选题</li></ul><div class="goal"><b>验收</b>：≥2 个结构分享率 ≥0.30 且互动率 ≥5%；变体均值 ≥ 原篇 80%；量房预约 ≥【待填】/月</div></div>
+<div class="ph"><div class="d">D71 – D91</div><h3>四 · 变现</h3><ul><li>1000 粉开私宅业主群</li><li>每周 1 条免费户型解析</li><li>薯条测 2 条（50 元起测）</li><li>商单测试 1 单（建材家居）</li><li>《大宅装修避坑清单》立项</li></ul><div class="goal"><b>验收</b>：群每周有互动；解析 ≥10 份/周；获客成本 ≤【待填】；量房→签约 ≥【待填】；商单 1 单</div></div>
+</div>
+<h2 class="sec">四、内容配比 / 标题模板 / 标签 / 验收线</h2>
+<div class="g2">
+<div class="card">
+<div class="bt" style="border:none;padding:0;margin-bottom:6px">内容配比</div>
+<div class="bar"><div class="bc" style="width:50%">案例 50%</div><div class="ba" style="width:32%">避坑 32%</div><div class="bd" style="width:18%">干货 18%</div></div>
+<div class="bt" style="margin-top:10px">形式分轨</div>
+<div class="bar"><div class="bv" style="width:50%">视频 11</div><div style="width:50%;background:#ece7de;color:var(--ink2)">图文 11</div></div>
+<div class="note">避坑 7 篇全视频；案例 9 图文 2 视频；干货 2+2。</div>
+<div class="bt">标题双模板</div>
+<ul class="flow" style="margin-top:5px">
+<li><b>痛点反共识型</b>（15-18 字）：必带 避坑/踩坑/别/后悔/封死/错</li>
+<li><b>结果前置型</b>（18-22 字）：面积 + 场景 + 结果数字</li>
+<li><b>清单攻略型</b>：必带 攻略/清单/指南/盘点</li></ul>
+<div class="warn" style="margin-top:11px"><b>标题不放城市名</b><div style="margin-top:4px">带城市词中位赞 1,707 vs 不带 5,400。成都放标签 + 正文首段 + 地理定位 + 楼盘名。</div></div>
+<div class="bt" style="margin-top:13px">每周固定动作</div>
+<ul class="flow" style="margin-top:5px">
+<li>周一 09:00 复盘（分享率/互动率/藏赞比/私信）</li><li>周二 拍素材 + 谈授权</li>
+<li>周三 09:00 写骨架或分镜 → 20:00 发</li><li>周四 补素材 / 剪图 / 写置顶评论</li>
+<li>周五 写 + 发｜周六 10:30 发｜周日 11:00 发</li><li>周日 20:00 回完评论 + 置顶评论补信息点｜21:00 长尾词库 +15</li>
+<li>月末 拆解表补 10 行；淘汰跑不动的选题</li></ul>
+</div>
+<div class="card">
+<div class="bt" style="border:none;padding:0;margin-bottom:6px">标签结构（5-8 个）</div>
+<table><tr><th>类别</th><th>本号固定用</th></tr>
+<tr><td>泛流量</td><td>#家装改造 / #家装设计</td></tr>
+<tr><td>精准长尾</td><td>#大平层装修 #别墅装修 #别墅设计 #叠拼别墅 #挑高客厅 #地下室装修</td></tr>
+<tr><td>官方话题</td><td>#装修灵感库 #我的装修记录</td></tr>
+<tr class="hi"><td>自创栏目</td><td><b>#把酒店搬回家</b></td></tr>
+<tr><td>地域</td><td>#成都大平层 / #成都别墅 / #成都装修（<b>只在标签</b>）</td></tr></table>
+<div class="bt" style="margin-top:13px">90 天量化验收线</div>
+<div class="tblwrap"><table style="margin-top:5px"><tr><th>指标</th><th>阶段一</th><th>阶段二</th><th>阶段三</th><th>阶段四</th></tr>
+<tr class="hi"><td><b>分享率</b></td><td class="num">—</td><td class="num">≥0.25</td><td class="num"><b>≥0.30</b></td><td class="num">≥0.30</td></tr>
+<tr><td>互动率</td><td class="num">≥3%</td><td class="num">≥3%</td><td class="num"><b>≥5%</b></td><td class="num">≥5%</td></tr>
+<tr><td>藏赞比</td><td class="num">—</td><td class="num">≥0.5</td><td class="num">≥0.5</td><td class="num">≥0.5</td></tr>
+<tr><td>24h 播放</td><td class="num">≥500</td><td class="num">≥1000</td><td class="num">≥2000</td><td class="num">≥2000</td></tr>
+<tr><td>搜索来源</td><td class="num">≥10%</td><td class="num">≥30%</td><td class="num">≥40%</td><td class="num">≥40%</td></tr>
+<tr><td>私信 / 量房</td><td class="num">—</td><td class="num">≥3/周</td><td class="num">≥8/周 · ≥1/月</td><td class="num">≥15/周 · ≥【待填】/月</td></tr>
+</table></div></div></div>
+<h2 class="sec">五、发布后 SOP（每篇执行）</h2>
+<div class="g2">
+<div class="card"><div class="bt" style="border:none;padding:0;margin-bottom:6px">发布前 5 分钟（全过才发）</div>
+<ul class="cl">
+<li>标题 ≤22 字（避坑类 ≤18 字）</li><li>核心搜索词落在前 15 字；形式是三类之一</li>
+<li><b>标题里没有城市名</b></li><li>痛点反共识型带痛点词；清单攻略型含攻略/清单/指南/盘点</li>
+<li>案例类标题含可转发钩子（尺寸/可抄作业/前后数字）</li><li>正文每段 ≤3 行，5 段结构齐全</li>
+<li>真实数据无「大约/差不多」，缺的写【待填】</li>
+<li>效果图标「设计效果图」，实景标「完工实景」，酒店标「酒店项目实景」</li>
+<li>无绝对化用语；正文图片无微信电话二维码</li><li>标签 5-8 个，含成都地域 + #把酒店搬回家</li>
+<li>视频篇：分镜拍完，前 3 秒有冲突或数字，字幕与口播一致</li>
+<li>视频篇已给关键尺寸（附尺寸分享赞比 1.02）</li><li>对比图同机位同焦段</li>
+<li>案例含改造前 + 户型图 + 分空间实景</li><li>已勾选「AI 生成 / AI 辅助创作」</li>
+<li>发布档位：工作日 12:00-13:00 / 19:00-21:30，周末 10:00-12:00</li></ul></div>
+<div class="card"><div class="bt" style="border:none;padding:0;margin-bottom:6px">发布后 1 小时 / 24 小时</div>
+<ul class="cl">
+<li>1 小时内：置顶评论已发，补的是实信息点</li><li>1 小时内：已回复前 20 条评论</li>
+<li>24 小时：已算分享率 / 互动率 / 藏赞比</li>
+<li><b>分享率 ≥0.30</b>（案例类主指标）→ 记进 Top 结构表</li>
+<li>藏赞比 ≥0.5（攻略类）→ 该方向做成系列</li>
+<li>互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰方向（不改不删）</li>
+<li>播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li>
+<li>私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li>
+<li>7 天：有搜索来源 → 标题模板进「标题模板库」</li><li>本周新增长尾词 ≥15 个</li></ul>
+<div class="warn" style="margin-top:11px"><b>明确禁止的动作</b><ul>
+<li>流量上升期改封面 / 改正文 / 删笔记</li><li>连续更换发布时间</li><li>批量同质化重发 / 洗稿</li>
+<li>AI 全自动托管账号、自动回复评论</li><li>AI 生成效果图冒充完工实景</li><li>虚构人设、经历、业主反馈</li>
+<li>正文图片留微信电话二维码</li><li>绝对化用语</li><li>批量代写批量发布</li></ul></div></div></div>
+<div class="toc"><h2>目录（点标题跳转）</h2><ol>
+<li><a href="#D1">D1　320㎡大平层去客厅化，客厅多出80㎡</a></li>
+<li><a href="#D2">D2　机动日：本周素材统一拍摄日：把 D3 需要的真人工地</a></li>
+<li><a href="#D3">D3　大平层装修避坑：合同不写这4项必加钱</a></li>
+<li><a href="#D4">D4　机动日：D5 素材：别墅/大平层预算分配手写表 1 </a></li>
+<li><a href="#D5">D5　别墅装修预算攻略：7项分配清单</a></li>
+<li><a href="#D6">D6　260㎡别墅地下室改造：从车库到娱乐层</a></li>
+<li><a href="#D7">D7　别墅设计别迷信大客厅：260㎡反着来</a></li>
+<li><a href="#D8">D8　一镜到底看380㎡的院子，改完业主天天待</a></li>
+<li><a href="#D9">D9　机动日：D10 素材：挑高客厅全亮 vs 分层开关实</a></li>
+<li><a href="#D10">D10　大平层挑高灯光避坑：吊一盏大灯就错了</a></li>
+<li><a href="#D11">D11　机动日：D12 素材：衣帽间/储藏间实景 3 张（开</a></li>
+<li><a href="#D12">D12　别墅收纳攻略：8个位置+6个尺寸清单</a></li>
+<li><a href="#D13">D13　320㎡大平层客厅去掉电视，多出一间书房</a></li>
+<li><a href="#D14">D14　140㎡横厅一镜到底：楼梯挪位，客厅多出6㎡</a></li>
+<li><a href="#D15">D15　400㎡大平层改造｜砍掉3项，预算反而降</a></li>
+<li><a href="#D16">D16　机动日：D17 素材：全屋定制合同条款实拍 1 张（</a></li>
+<li><a href="#D17">D17　别墅全屋定制避坑：合同少这4项就加钱</a></li>
+<li><a href="#D18">D18　机动日：D19 素材：别墅交付现场实拍 2 张、验收</a></li>
+<li><a href="#D19">D19　别墅交付验收攻略：15项清单，照着查</a></li>
+<li><a href="#D20">D20　12㎡厨房改中西分厨：大平层也能双动线</a></li>
+<li><a href="#D21">D21　地下室别做暗：采光问题3个解法</a></li>
+<li><a href="#D22">D22　240㎡大平层入户：玄关改成酒店式序厅</a></li>
+<li><a href="#D23">D23　机动日：D24 素材：别墅装修报价单与结算对比实拍 </a></li>
+<li><a href="#D24">D24　别墅装修增项避坑：这5项不提前定多花20%</a></li>
+<li><a href="#D25">D25　机动日：D26 素材：别墅与大平层客厅实景 2 张（</a></li>
+<li><a href="#D26">D26　大平层灯光攻略：3层回路+8个位置</a></li>
+<li><a href="#D27">D27　叠拼别墅改造：只打通一半，换来挑空客厅</a></li>
+<li><a href="#D28">D28　别墅材料盘点：5种耐看且不贵</a></li>
+<li><a href="#D29">D29　大平层量房避坑：这3处漏了全返工</a></li>
+<li><a href="#D30">D30　320㎡大平层量房：改完多出18㎡</a></li>
+</ol></div>
+<h2 class="sec">六、30 天逐日执行（22 篇发布 + 8 个机动备料日）</h2>
+<div class="day" id="D1">
+<div class="dh"><h3>D1　320㎡大平层去客厅化，客厅多出80㎡</h3><span class="m">周一 12:30　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜结果前置型</span><span class="tag ">图文</span> <span class="tag ta">★ 酒店体验做进私宅</span><br>核心搜索词：大平层去客厅化、去客厅化、大平层客厅改造、横厅设计　｜　长尾：300平装修、成都大平层设计、大平层改造案例</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：320㎡大平层去客厅化，客厅多出80㎡　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 A</b>：大平层去客厅化｜320㎡住出400㎡的爽感　<span style="color:var(--muted);font-size:12px">（21 字）</span></li>
+<li><b>变体 B</b>：去客厅化改造：320㎡大平层的三个决定　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">大平层去客厅化
+客厅多出80㎡</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前 vs 改造后同角度客厅）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">大平层面积大，但住进去像「摊大饼」——客厅大却空、灯一开刺眼、走到卧室要穿过半个房子</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主原方案：客厅做满造型背景墙 + 一盏大吊灯 + 通铺大理石。面积够了，但视觉上更空，灯下更晃眼。本项目我们推翻了这三处</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">大平层的关键是「分层」和「动线」，不是造型；① 挑高客厅做灯光分层：基础光只管均匀，氛围光做墙面洗光，功能光给茶几和餐桌
+② 客厅按「会客 / 阅读 / 影音」三区重排，而不是一整块空地；③ 打通客厅与餐厅的视线轴，让 300㎡ 显小——大平层最怕的是「各干各的」
+④ 主卧套房化：更衣区 + 卫生间 + 套房厅一体，这套是本项目的酒店感来源</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡大平层，改造前【待填：面积】㎡，改造后净空间提升约【待填：㎡】㎡
+工期【待填：天】天，设计费【待填：金额】，硬装总投入【待填：金额】
+灯位【待填：数量】个分【待填：数量】路控制；客厅进深从【待填：米】m 收到【待填：米】m</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">200㎡ 以上最难的不是买材料，是把面积用得「有节奏」
+收藏这篇，下次看样板间时用这 4 条对照
+评论区扣「大平层」，发你一份挑高客厅灯光自检表</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>7 个</small></div><div class="tags"><span>#成都大平层</span><span>#大平层装修</span><span>#大平层改造</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#成都装修</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡，业主最初要的是满墙造型，我们改成灯位【待填：数量】个分【待填：数量】路，客厅反而亮了。改造后净空间多出约【待填：㎡】㎡。要挑高客厅灯光自检表，评论区扣「大平层」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>客厅改造前实景 3 张</li><li>原始户型图 1 张（标注挑高与结构柱）</li><li>完工客厅实景 4 张（开灯 / 关灯同角度对比）</li><li>灯位图 1 张</li><li>全套主材与灯具清单 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 改造前图标注「改造前实景」；效果图必须标「设计效果图」</li><li>□ 酒店/样板间素材若非本项目，须标「酒店项目实景」</li><li>□ 业主信息不露脸不露名，已授权的对话可打码引用</li><li>□ 正文与图片无微信 / 电话 / 二维码</li><li>□ 标题 ≤22 字且「成都大平层」在前 15 字</li><li>□ 标签 7 个，含官方话题 2 + 长尾 2 + 自创 1 + 地域 1</li><li>□ 发布页已勾选「AI 生成 / AI 辅助创作」</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>09:00-10:00 补拍 3 个角度（挑高全景 / 开灯 / 灯位特写）</li><li>10:00-11:30 排版 9 张 + 填真实数字与金额</li><li>12:30 发布</li><li>13:30 置顶评论</li><li>次日 12:30 复盘数据</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day rest" id="D2">
+<div class="dh"><h3>D2　周二　机动备料日</h3><span class="m">不发帖 · 专门备料</span></div>
+<div class="blk"><div class="bt">这天做什么</div><div class="seg"><div class="sx">本周素材统一拍摄日：把 D3 需要的真人工地半身照 2 张、大平层售楼部/样板间实拍（可公开的）2 张、设计费构成手写表 1 张一次性拍齐
+同步做一件事：给手上每个成都项目排一张「授权状态表」——已授权公开 / 仅内部 / 需补签，这是本赛道最大的瓶颈</div></div></div>
+<div class="blk"><div class="bt">提醒</div><ul class="chk"><li>不发帖日。这一周必须把授权谈下来，不是等做完了再补</li><li>样板间实拍仅限可公开项目，售楼部画面注意版权与保密条款</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>拍 D3 素材（60 min）</li><li>整理 30 天拆解表 + 授权状态表（30 min）</li></ul></div>
+</div>
+<div class="day" id="D3">
+<div class="dh"><h3>D3　大平层装修避坑：合同不写这4项必加钱</h3><span class="m">周三 20:00　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag ta">避坑｜痛点反共识型</span><span class="tag tv">视频</span><br>核心搜索词：大平层装修避坑、大平层装修、大平层设计合同　｜　长尾：大平层设计费多少、大平层装修多少钱、别墅设计费</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：大平层装修避坑：合同不写这4项必加钱　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 A</b>：大平层装修攻略｜签合同前先查这4项　<span style="color:var(--muted);font-size:12px">（17 字）</span></li>
+<li><b>变体 B</b>：大平层装修避坑指南：这4项不写就等着加钱　<span style="color:var(--muted);font-size:12px">（20 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">大平层装修避坑
+合同少4项就加钱</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：大字 + 真人半身（工地或大平层落地现场背景）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：合同条款特写 + 红框）口播：签设计合同，这4项没写，结算一定多一笔
+3-8s 结论前置：计价口径 / 见光板 / 特殊工艺 / 五金品牌
+8-22s 点1 投影面积还是展开面积（差20%-40%）｜画面：两个公式并排字幕
+22-36s 点2 见光板封板收口是否包含（别墅异形多，金额常超预期）｜画面：柜体转角特写
+36-48s 点3 特殊工艺与五金型号（写品牌不写标配）｜画面：合同条款打码实拍
+48-55s 真实数据：本项目报价【待填】结算【待填】差价最大一项是【待填】
+55-60s CTA：评论区扣「定制」领条款清单（字幕：别让他按实际计价）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">200-400㎡ 的业主最容易犯的错：拿「谁报价低」当第一决策，把设计当成买施工</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目一位业主，签约时比价选了便宜的一家，合同里只写了「出图」和「施工配合」。三个月后要求加做挑空保护、全屋收纳深化、庭院排水改造，全部按变更另算钱，追加【待填：金额】万</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">签设计合同前必须想清 3 件事；① 你要解决的问题是空间还是风格：200㎡+ 的房子，风格随问题走，不是反过来
+② 哪些钱是「必须现在定」的：结构拆改、机电（暖通/新风/全屋智能）、水电点位、防水，这四项后期改一次等于重做一次；③ 交付边界写清楚：图纸深度、选品是否含、软装是否跟场、施工方是否固定
+这三件写进合同，比「多花几千」重要得多</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，设计费【待填：金额】，占总投入约【待填：%】%
+本项目设计阶段介入相比施工后才介入，省下的变更费用约【待填：金额】
+我们这套合同包含：【待填：项数】项交付物，其中深化图纸【待填：项数】项</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">200㎡+ 装修，设计费省不得，但要看签的是什么
+收藏这篇，签合同前拿出来对一遍
+评论区说说你家面积多少、现在卡在设计还是施工，我帮你看第一步</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>7 个</small></div><div class="tags"><span>#大平层装修</span><span>#大平层设计费</span><span>#成都装修</span><span>#装修避坑</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：合同里最该盯的是「交付边界」和「哪些钱后期改一次等于重做」。这套【待填：面积】㎡ 的合同含【待填：项数】项交付物，设计费占总投入约【待填：%】%。评论区说你家面积和阶段。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>真人大平层落地现场半身照 2 张</li><li>设计合同交付物清单（脱敏）1 张</li><li>设计费构成手写表 1 张</li><li>成都大平层楼盘实景 2 张（可公开项目）</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 真人出镜须本人，禁 AI 生成人像</li><li>□ 合同截图必须脱敏（姓名 / 电话 / 地址 / 金额 / 甲方公司）</li><li>□ 不得影射或指名具体装修公司</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「大平层装修」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周二已拍素材 → 周三 09:00 写骨架填真实金额</li><li>09:40 排版 8 张（首图大字 + 真人 2 + 合同清单 1 + 费用表 1 + 楼盘 2）</li><li>20:00 发布</li><li>21:00 置顶评论并回复全部评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day rest" id="D4">
+<div class="dh"><h3>D4　周四　机动备料日</h3><span class="m">不发帖 · 专门备料</span></div>
+<div class="blk"><div class="bt">这天做什么</div><div class="seg"><div class="sx">D5 素材：别墅/大平层预算分配手写表 1 张（7 项拆解，含别墅专属项）、水电与设备现场实拍 2 张</div></div></div>
+<div class="blk"><div class="bt">提醒</div><ul class="chk"><li>不发帖日；预算类笔记的封面就是那张手写表，先把它拍好</li><li>高客单内容里「金额」是最敏感也最有说服力的部分，务必用真实结算数据</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>拍 D5 素材（40 min）</li><li>写 D5 骨架（30 min）</li></ul></div>
+</div>
+<div class="day" id="D5">
+<div class="dh"><h3>D5　别墅装修预算攻略：7项分配清单</h3><span class="m">周五 20:00　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag td">干货｜清单攻略型</span><span class="tag tv">视频</span><br>核心搜索词：别墅装修预算、大宅装修预算　｜　长尾：大平层装修预算、别墅装修多少钱、成都别墅预算</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：别墅装修预算攻略：7项分配清单　<span style="color:var(--muted);font-size:12px">（15 字）</span></li>
+<li><b>变体 A</b>：别墅装修预算｜平层没有的这2项要单列　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 B</b>：成都别墅装修预算：7项清单照着抄　<span style="color:var(--muted);font-size:12px">（16 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">别墅装修预算攻略
+7 项分配清单</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：大字（预算表手写做底纹）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：手写预算表划掉两项）口播：别墅的预算表，平层的抄不了
+3-8s 结论前置：比平层多两项——机电设备、庭院/地下室专项
+8-20s 点1 七项占比逐条报（手写表一格一格点亮）
+20-32s 点2 平层没有的第4项：机电（暖通/新风/全屋智能/水处理）最容易低估
+32-44s 点3 平层没有的第5项：庭院/户外/地下室专项
+44-54s 真实数据：本项目【待填】㎡含地下室【待填】㎡，机电占比【待填】%，超支最大两项【待填】
+54-60s CTA：评论区扣「预算」领空白7项表</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">大平层的预算表网上能抄，别墅的抄不了——很多项在 200㎡ 以下根本不存在，超支就从这些项冒出来</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主原话：以为 300㎡ 别墅预算就是面积乘单价。实际结算时，【待填：项】这一项就多出【待填：金额】万——因为没人提前算过地下室的排水和防潮</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">7 项分配，和平层版本比多了 2 项：；① 硬装（施工）【待填：%】%；② 主材【待填：%】%
+③ 全屋定制 + 门【待填：%】%；④ 机电设备（暖通 / 新风 / 全屋智能 / 水处理）【待填：%】%　← 别墅最容易低估；⑤ 庭院 / 户外 / 地下室专项【待填：%】%　← 别墅独有
+⑥ 家电 + 软装 + 家具【待填：%】%；⑦ 备用金【待填：%】%；平层没有 ④ 的一半，也没有 ⑤</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡（含地下室【待填：面积】㎡），签约【待填：金额】万，结算【待填：金额】万
+超支最多两项：【待填：项】【待填：金额】万、【待填：项】【待填：金额】万
+机电占比【待填：%】%，庭院与地下室专项【待填：金额】万</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">预算不是花钱计划，是「哪些钱挪不动」的清单
+收藏这张表，见设计师时先问：机电和庭院专项你算进去了吗
+评论区扣「预算」，发你一份可填的 7 项空白表</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#装修预算</span><span>#别墅装修预算</span><span>#大平层装修</span><span>#成都装修</span><span>#装修避坑</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 含地下室【待填：面积】㎡，机电占比【待填：%】%，庭院与地下室专项【待填：金额】万。别墅和平层最不一样的是这两项。要空白表，评论区扣「预算」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>别墅预算分配手写表 1 张（7 项，含占比）</li><li>机电设备现场实拍 2 张（新风 / 空调主机 / 水处理）</li><li>地下室或庭院实拍 2 张</li><li>真实结算对比表 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 所有金额与占比必须来自真实项目结算，不得用行业均值冒充本项目</li><li>□ 禁「最省钱」「最便宜」等绝对化用语</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「装修预算」在前 15 字</li><li>□ 标签 9 个上限内（取 8）</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周四已备素材 → 周五 09:00 写骨架 + 填真实结算数据</li><li>09:40 排版 8 张</li><li>20:00 发布</li><li>21:00 置顶评论 + 回评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D6">
+<div class="dh"><h3>D6　260㎡别墅地下室改造：从车库到娱乐层</h3><span class="m">周六 10:30　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜痛点反共识型</span><span class="tag ">图文</span><br>核心搜索词：别墅地下室装修、别墅地下室、别墅改造、地下室改造　｜　长尾：别墅地下室装修、别墅改造案例、成都别墅设计</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：260㎡别墅地下室改造：从车库到娱乐层　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 A</b>：别墅地下室别浪费：改完多出40㎡娱乐区　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 B</b>：别墅地下室改造｜260㎡成都案例实拍　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">260㎡别墅地下室
+从车库到娱乐层</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前 vs 改造后同角度）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">别墅的地下室多数是「停车 + 储藏」，层高和采光限制下基本浪费；而一楼的庭院/下沉庭院又常常没人用</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主原方案：地下室做健身房 + 影音室 + 客房三合一，全部塞进去，结果层高不够做影音环绕、防水返潮、采光靠全灯</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">地下室的正确打开方式：；① 先量层高和采光条件：层高【待填：米】m 决定能不能做影音环绕、能不能做下沉庭院
+② 功能按「常去频率」排：影音要暗，健身房要亮，客房要安静，不能塞在一个空间互相打架；③ 返潮和通风先解决：新风 + 除湿 + 防水是前置，不是后补
+④ 联动庭院：如果有下沉庭院，地下室和庭院之间做「可视洞口」，这是别墅最值钱的一笔</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">地下室净面积【待填：面积】㎡，层高【待填：米】m，原始采光条件【待填：现状】；改造后功能：影音 / 健身 / 储藏 /【待填：项】
+与下沉庭院连通面积【待填：面积】㎡，通风与除湿新增设备【待填：项】；造价【待填：金额】，工期【待填：天】天</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">别墅的面积一半在地上，一半在地下，地下那半最常被浪费
+收藏这篇，量房时先量地下室层高和采光
+评论区扣「地下室」，发你一份地下室功能分配表</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#别墅改造</span><span>#别墅地下室</span><span>#地下室装修</span><span>#成都别墅</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#成都装修</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套地下室层高【待填：米】m，决定了能不能做环绕声和下沉庭院。改造后与庭院连通【待填：面积】㎡。要地下室功能分配表，评论区扣「地下室」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>地下室改造前实景 2 张</li><li>原始户型与层高图 1 张</li><li>改造后同角度实景 3 张（影音区 / 健身区 / 庭院连通口）</li><li>设备清单 1 张（新风 / 除湿）</li><li>造价明细 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 案例三件套齐全：改造前 + 户型图 + 分空间实景</li><li>□ 地下室防水与通风建议须符合当地规范，不得给违规做法</li><li>□ 业主信息不露脸不露名</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「别墅改造」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周二拍改造前（趁旧貌还在）→ 周六前拍完工</li><li>周五 09:00 写骨架填真实数据</li><li>周六 09:30 排版 9 张</li><li>10:30 发布</li><li>11:30 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D7">
+<div class="dh"><h3>D7　别墅设计别迷信大客厅：260㎡反着来</h3><span class="m">周日 11:00　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag ta">避坑｜痛点反共识型</span><span class="tag tv">视频</span><br>核心搜索词：别墅设计、别墅、别墅客厅布局　｜　长尾：别墅户型设计、大平层和别墅区别、成都别墅</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：别墅设计别迷信大客厅：260㎡反着来　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 A</b>：260㎡别墅把客厅让给老人房，全家说好　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 B</b>：别墅客厅别做大｜这套改完全家说好　<span style="color:var(--muted);font-size:12px">（16 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">别墅别迷信大客厅
+260㎡ 反着来</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（平面动线图：各自独立 vs 打通）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：300㎡客厅空镜）口播：260㎡的别墅，客厅做成90㎡，全家都说好
+3-8s 结论前置：客厅让给老人房，比多一间房更值
+8-20s 点1 业主原方案客厅【待填】㎡、老人房【待填】㎡（画面：平面图圈注）
+20-34s 点2 三代人的真实痛点：老人房太小、客厅没人用
+34-46s 点3 改法：客厅缩小但复合使用 + 老人房独立成套 + 二层动线缩短
+46-55s 真实数据：客厅【待填】→【待填】㎡，老人房【待填】→【待填】㎡，改动在出图阶段完成零返工
+55-60s CTA：评论区说说你家几口人、老人住几楼</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">别墅和大平层最大的错觉：面积够大，就照着大平层的思路做——大客厅、大卧室、动线拉长</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主原方案：客厅做到【待填：面积】㎡，主卧【待填：面积】㎡。我们到现场量完发现：三代人同住，客厅再大没人用，老人房却只有【待填：面积】㎡，晚上和客厅共用一个动线</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">200㎡+ 的房子要按「谁在什么时候用什么空间」重排；① 一层给「回家即到」的公共区，二层给「安静」的私密区
+② 把客厅面积让给老人房或多功能房，客厅缩小但复合使用（会客 / 影音 / 亲子）；③ 二层主卧套房要独立成组：更衣 + 卫浴 + 起居，不和公共区串
+④ 别墅多一层意味着多一套动线，楼梯位置决定这层好不好用</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，改前客厅【待填：面积】㎡、老人房【待填：面积】㎡；改后客厅【待填：面积】㎡、老人房【待填：面积】㎡、多功能房【待填：面积】㎡
+二楼动线长度从【待填：米】m 收到【待填：米】m；这套方案在施工前调整，返工成本为 0（改图阶段改）</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">大房子的价值不在面积，在「每个面积都被真正使用」
+收藏这篇，见设计师时先聊家庭成员和作息，别先聊风格
+评论区说说你家几口人、老人住几楼，我帮你看动线怎么排</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#别墅设计</span><span>#别墅户型</span><span>#大平层设计</span><span>#成都别墅</span><span>#装修避坑</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 客厅从【待填：面积】㎡ 缩到【待填：面积】㎡，老人房从【待填：面积】㎡ 变成【待填：面积】㎡，二楼动线缩短【待填：米】m。改动全在出图阶段完成，零返工。要动线思路，评论区说说你家人数。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>原始户型图 + 改造后户型图 2 张</li><li>客厅与老人房实景各 2 张</li><li>二层动线标注图 1 张</li><li>三代人作息假设表 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 平面图须为真实项目，禁生成图</li><li>□ 面积数据须与图纸一致</li><li>□ 不得提供违法改扩建建议</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「别墅设计」在前 15 字</li><li>□ 标签 9 个（取 8）</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周六前备齐实拍 → 周日 09:00 写骨架</li><li>09:30 排版 9 张</li><li>11:00 发布</li><li>12:00 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D8">
+<div class="dh"><h3>D8　一镜到底看380㎡的院子，改完业主天天待</h3><span class="m">周一 12:30　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜结果前置型</span><span class="tag tv">视频</span><span class="tag">连载 EP1</span> <span class="tag ta">★ 酒店体验做进私宅</span><br>核心搜索词：别墅庭院设计、别墅庭院、别墅院子、院子、庭院改造　｜　长尾：别墅庭院改造、庭院设计、别墅院子设计</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：一镜到底看380㎡的院子，改完业主天天待　<span style="color:var(--muted);font-size:12px">（20 字）</span></li>
+<li><b>变体 A</b>：别墅庭院改造：没做假山，院子成最爱房间　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 B</b>：成都380㎡别墅庭院：一镜到底看改造　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">380㎡别墅院子
+一镜到底 看改造</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前 vs 改造后同角度庭院）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：院子一镜到底推进）口播：这套380㎡的院子，我们没做假山
+3-8s 结论前置：院子是给人待的，不是给人看的
+8-18s 点1 朝向决定一切：这套朝【待填】，日照【待填】，硬景观等于浪费
+18-30s 点2 沿墙3.5m檐廊=半室外客厅，晴天遮阴雨天避雨
+30-42s 点3 中间留【待填】㎡可种植地块，只保留一处水景
+42-53s 真实数据：造价从【待填】降到【待填】，业主回访【待填】
+53-60s CTA：评论区扣「庭院」领院子自问清单</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">别墅院子最容易做成「一次性工程」：拍照好看，住进去没人去。设计师默认给假山 + 铺装 + 绿植，业主住进去发现既不好走也不好用</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目业主原方案：做一个【待填：面积】㎡ 的观赏性前院，含假山、水景、整铺天然石材。造价【待填：金额】，但院子朝北、且被【待填：遮挡】挡住一半，冬天完全用不了</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">庭院先回答三个问题，再谈造景：；① 谁在什么时候用：早餐、傍晚、孩子玩、老人坐着——决定朝向和铺装；② 什么天气用：成都的日照是关键，朝向不对，造得再好也晒不到
+③ 维护成本：别墅院子最贵的是维护，水景和草坪一年要花【待填：金额】；我们这套的做法：把院子改成「有墙有院」的半室外客厅——；· 沿墙做 3.5m 檐廊，晴天遮阴雨天避雨
+· 中间留【待填：面积】㎡ 可种植地块，可自主打理，不做硬景观；· 地面用【待填：材料】，耐雨耐踩，接排水坡度【待填：%】；· 只保留一处水景，做在檐廊边上，人坐着能看见</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">庭院面积【待填：面积】㎡，朝向【待填：朝向】，日照时段【待填：时段】；檐廊进深【待填：米】m，可种植【待填：面积】㎡
+造价从原方案【待填：金额】降到【待填：金额】；日常使用频率（业主回访）：【待填：回访记录】</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">院子不是拍出来的是住出来的，先定「谁在什么时候用」
+收藏这篇，成都的日照条件值得单独做一次推演
+评论区扣「庭院」，发你一份院子自问清单</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#别墅庭院设计</span><span>#庭院设计</span><span>#成都别墅</span><span>#别墅改造</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#成都装修</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套院子朝向【待填：朝向】，所以我们没做假山，改成 3.5m 檐廊的半室外客厅，造价从【待填：金额】降到【待填：金额】。院子是给人待的，不是给人看的。要自问清单，评论区扣「庭院」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>庭院改造前实景 2 张</li><li>朝向与日照推演图 1 张</li><li>改造后同角度实景 3 张</li><li>檐廊与铺装细节特写 2 张</li><li>造价对比表 1 张</li><li>业主回访记录（已授权打码）</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 业主回访引用须已授权并脱敏，不得改写为好评</li><li>□ 朝向、日照数据须真实（可用手机测或请专业机构）</li><li>□ 造价对比须为真实项目数据</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「别墅庭院设计」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周日拍完工 → 周一 09:00 写骨架填真实数据</li><li>11:30 排版 9 张</li><li>12:30 发布</li><li>13:30 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day rest" id="D9">
+<div class="dh"><h3>D9　周二　机动备料日</h3><span class="m">不发帖 · 专门备料</span></div>
+<div class="blk"><div class="bt">这天做什么</div><div class="seg"><div class="sx">D10 素材：挑高客厅全亮 vs 分层开关实景各 1 张（必须同机位同焦段）、灯位图 1 张、真人出镜照 2 张</div></div></div>
+<div class="blk"><div class="bt">提醒</div><ul class="chk"><li>不发帖日；挑高对比图的说服力全靠同角度，必须一次拍齐</li><li>顺带把「成都日照」这件事做个记录：自家几个户型朝向如何（后面 D8、D28 都要用）</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>拍 D10 挑高灯光对比（60 min）</li><li>拆解表补 10 行（30 min）</li></ul></div>
+</div>
+<div class="day" id="D10">
+<div class="dh"><h3>D10　大平层挑高灯光避坑：吊一盏大灯就错了</h3><span class="m">周三 20:00　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag ta">避坑｜痛点反共识型</span><span class="tag tv">视频</span> <span class="tag ta">★ 酒店体验做进私宅</span><br>核心搜索词：挑高客厅灯光、挑高灯光、挑空客厅、大平层灯光　｜　长尾：挑高设计、大平层灯光、无主灯后悔、挑空客厅</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：大平层挑高灯光避坑：吊一盏大灯就错了　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 A</b>：挑高客厅灯光攻略：300㎡这样分层才对　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 B</b>：大平层挑空客厅｜灯光分层指南　<span style="color:var(--muted);font-size:12px">（14 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">挑高客厅灯光避坑
+别吊一盏大灯</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：真人 + 对比图（挑高全景全亮 vs 分层开关）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：挑高客厅吊一盏巨灯）口播：挑高客厅吊一盏大灯，就是错的
+3-8s 结论前置：挑高的光要分四层，不是一盏
+8-20s 点1 顶部基础光做均匀照度（画面：洗墙光带亮起）
+20-32s 点2 中部氛围光把墙变成发光面（画面：挑空墙面洗光）
+32-42s 点3 功能光给茶几/餐桌/阅读角/楼梯踏步
+42-52s 真实数据：挑高【待填】m，灯位【待填】个分【待填】路，墙面洗光到【待填】m
+52-60s CTA：评论区扣「挑高」领挑高灯光自检表（判断标准：墙面是不是亮的）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">200㎡+ 最容易出现的失误：客厅挑高 4 米以上，就吊一盏巨大的主灯。结果是白天刺眼、晚上一开只剩中间亮，两头全是暗角</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目另一套【待填：户型】就是这样：挑高【待填：米】m，配了一盏【待填：直径】m 的主灯 + 一圈灯带。业主反馈：站在沙发区整个背光，看电视反而更看不清</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">挑高空间的光要分层，而且层数比平层多一层：；① 顶部基础光：做均匀照度，负责「看清」，用可调角度洗墙，不做中心大灯
+② 中部氛围光：挑空墙面做洗光或投光，把墙变成发光面，纵深立刻出来；③ 功能光：茶几、餐桌、阅读角、楼梯踏步各一盏，负责「干活的活」
+④ 补充：挑空顶面如果有回字形吊顶，把灯带藏在回字里，只留「悬浮」感；酒店大堂的做法就是这个逻辑，只是把它降到住宅</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">挑高【待填：米】m，客厅面积【待填：面积】㎡；灯位【待填：数量】个分【待填：数量】路；墙面洗光高度【待填：米】m
+色温【待填：K】K，显色指数【待填：Ra】；总功率【待填：W】W，比同面积平层方案多【待填：%】%</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">挑高做灯的判断标准只有一句：人站在地上，墙面是不是亮的
+收藏这篇，量房时先记挑高高度，再定灯位
+评论区扣「挑高」，发你一份挑高灯光自检表</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#挑高客厅</span><span>#大平层灯光设计</span><span>#大平层装修</span><span>#成都装修</span><span>#装修避坑</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：挑高【待填：米】m 配一盏【待填：直径】m 大灯是最常见的错。我们改成【待填：数量】个灯位分【待填：数量】路，墙面洗光到【待填：米】m。要挑高自检表，评论区扣「挑高」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>挑高全景全亮实景 1 张</li><li>同机位分层开关实景 1 张</li><li>灯位与洗光高度图 1 张</li><li>真人大平层现场半身照 2 张</li><li>灯具清单 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 对比图必须同机位同焦段，禁后期合成</li><li>□ 效果图标「设计效果图」</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「挑高客厅」在前 15 字</li><li>□ 标签 9 个（取 8）</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周二已拍对比图 → 周三 09:00 写骨架填真实参数</li><li>09:40 排版 8 张</li><li>20:00 发布</li><li>21:00 置顶评论 + 回评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day rest" id="D11">
+<div class="dh"><h3>D11　周四　机动备料日</h3><span class="m">不发帖 · 专门备料</span></div>
+<div class="blk"><div class="bt">这天做什么</div><div class="seg"><div class="sx">D12 素材：衣帽间/储藏间实景 3 张（开门内部 + 抽屉拉出 + 灯带）、尺寸标注图 1 张、按频率分四层示意 1 张</div></div></div>
+<div class="blk"><div class="bt">提醒</div><ul class="chk"><li>不发帖日；大平层的收纳必须拍到内部格局，关着门拍等于没拍</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>拍 D12 收纳细节（60 min）</li><li>写 D12 骨架（30 min）</li></ul></div>
+</div>
+<div class="day" id="D12">
+<div class="dh"><h3>D12　别墅收纳攻略：8个位置+6个尺寸清单</h3><span class="m">周五 20:00　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag td">干货｜清单攻略型</span><span class="tag ">图文</span> <span class="tag ta">★ 酒店体验做进私宅</span><br>核心搜索词：别墅收纳、收纳、收纳位、季节收纳　｜　长尾：衣帽间设计、大平层收纳、别墅储藏间、收纳尺寸</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：别墅收纳攻略：8个位置+6个尺寸清单　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 A</b>：大平层全屋收纳｜柜内分4层的做法　<span style="color:var(--muted);font-size:12px">（16 字）</span></li>
+<li><b>变体 B</b>：别墅收纳位清单：最该藏的不是东西，是季节　<span style="color:var(--muted);font-size:12px">（20 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">别墅收纳攻略
+8位置+6尺寸</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：细节特写（衣帽间 / 储藏间内部格局）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">200㎡+ 最不缺面积，最缺的是「放东西的地方」——但很多豪宅把收纳做成了整墙柜，一样难找</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主原方案：整墙通顶柜 + 抽屉 + 挂衣，按「看起来整齐」分区。本项目另一套【待填：户型】就是这样，换季衣物全在客厅储物间，抽屉最上层永远不用</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">别墅/大平层的收纳要按「使用频率」分四层，再按 8 个位置落位：；· 高频区（腰到肩）：挂当季、叠当季换洗、常用抽屉
+· 中频区（上翻门 / 台面）：换季过渡、待洗、备品；· 低频区（深柜 / 高柜）：行李箱、被褥、收藏
+· 特殊位：挂烫区、熨烫区、清洁工具位、宠物位、囤货位；8 个位置：主卧衣帽间、客卫收纳、次卧衣柜、玄关储藏、厨房高柜、楼梯下方、阳台设备位、地下库存房</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，全屋柜体净容积【待填：立方米】m³ / 约【待填：数量】个 24 寸行李箱；衣帽间净尺寸【待填：mm】×【待填：mm】×【待填：mm】mm
+6 个关键尺寸：挂杆高【待填：mm】、短衣区【待填：mm】、抽屉高【待填：mm】、层板间距【待填：mm】、深柜进深【待填：mm】、挂烫位宽【待填：mm】；换季物品从客厅移入柜内【待填：%】%</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">8 个位置 + 6 个尺寸，定制柜下单前对着量一遍
+收藏这篇，见全屋定制方时直接报尺寸
+评论区扣「收纳」，发你一份空白尺寸表</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#别墅收纳</span><span>#全屋收纳</span><span>#衣帽间设计</span><span>#大平层装修</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#成都装修</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 全屋柜体净容积【待填：立方米】m³，按频率分四层后，换季物品从客厅移入柜内【待填：%】%。衣帽间净尺寸【待填：mm】×【待填：mm】×【待填：mm】mm。要空白表，评论区扣「收纳」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>衣帽间 / 储藏间实景 3 张（开门、抽屉拉出、灯带）</li><li>尺寸标注图 1 张</li><li>四层分区示意 1 张</li><li>全屋收纳位置平面图 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 尺寸必须与本项目实际一致，禁生成图</li><li>□ 效果图标「设计效果图」</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「别墅收纳」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周四已备素材 → 周五 09:00 写骨架 + 填 6 个真实尺寸</li><li>09:40 排版 8 张</li><li>20:00 发布</li><li>21:00 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D13">
+<div class="dh"><h3>D13　320㎡大平层客厅去掉电视，多出一间书房</h3><span class="m">周六 10:30　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜结果前置型</span><span class="tag ">图文</span><br>核心搜索词：大平层客厅设计、大平层客厅、去客厅化　｜　长尾：大平层客厅设计、客厅不放电视、大平层改造</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：320㎡大平层客厅去掉电视，多出一间书房　<span style="color:var(--muted);font-size:12px">（20 字）</span></li>
+<li><b>变体 A</b>：大平层客厅去掉电视｜多出一间能用的书房　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 B</b>：大平层客厅改造：取消电视墙的做法　<span style="color:var(--muted);font-size:12px">（16 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">320㎡大平层客厅
+去掉电视多一间</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前后客厅同角度）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">200㎡+ 的客厅被电视墙占掉，是最常见的浪费——尤其是大平层，客厅本来就有两面长墙可以做事</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目业主原话：要有电视，还要有投影，还要做电视墙造型。我们把三样砍到一样：在【待填：墙面】做升降电视（不占立面），投影幕用侧墙电动幕</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">大平层客厅的改造逻辑：；① 电视做成升降或侧挂，不做造型墙
+② 原来电视墙的位置，做整面书柜 + 展示柜，把「电视墙」变成「收纳墙」；③ 客厅剩下的墙面给投影（侧墙电动幕），这样客厅可以切换成影音模式
+④ 主卧套房做家庭影音/放映区，把「看电视」这件事从客厅搬走一次试试；最终这套客厅同时能当会客、阅读、影音三用</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，客厅【待填：面积】㎡；电视墙改为整面柜体后新增净收纳【待填：面积】㎡ / 【待填：立方米】m³
+新增书房（或多功能房）【待填：面积】㎡；预算变化：电视柜 -【待填：元】，升降电视 +【待填：元】，柜体 +【待填：元】，净变化【待填：元】
+业主入住【待填：月】后回访：【待填：回访记录】</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">先问一句：你家一年看多少小时电视？答不上来就别先做电视墙
+收藏这篇，见设计师时把这句话给他
+评论区说说你家客厅最常干什么，我帮你看哪个功能该优先保</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>7 个</small></div><div class="tags"><span>#大平层设计</span><span>#大平层客厅</span><span>#大平层改造</span><span>#成都装修</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 客厅【待填：面积】㎡，电视墙改成整面柜体后新增收纳【待填：立方米】m³，还多出【待填：面积】㎡ 书房。预算净变化【待填：元】。要思路，评论区说说你家客厅最常干什么。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>改造前后客厅同角度各 2 张</li><li>完工实景 4 张（书柜墙 / 升降电视 / 侧墙投影幕 / 多功能角）</li><li>业主回访文字截图（已授权打码）</li><li>平面图 1 张</li><li>预算变化表 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 业主回访引用须已授权并脱敏，不得改写为好评</li><li>□ 金额数据须与真实结算一致</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「大平层设计」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周五拍完工图 → 周六 09:00 写骨架填真实数据</li><li>09:30 排版 9 张</li><li>10:30 发布</li><li>11:30 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D14">
+<div class="dh"><h3>D14　140㎡横厅一镜到底：楼梯挪位，客厅多出6㎡</h3><span class="m">周日 11:00　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜结果前置型</span><span class="tag tv">视频</span><br>核心搜索词：别墅楼梯设计、别墅楼梯、横厅、横厅设计　｜　长尾：别墅楼梯、别墅挑空设计、大平层楼梯设计</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：140㎡横厅一镜到底：楼梯挪位，客厅多出6㎡　<span style="color:var(--muted);font-size:12px">（22 字）</span></li>
+<li><b>变体 A</b>：别墅楼梯改造：客厅视觉上多出一截　<span style="color:var(--muted);font-size:12px">（16 字）</span></li>
+<li><b>变体 B</b>：横厅别墅楼梯｜位置一改客厅多出6㎡　<span style="color:var(--muted);font-size:12px">（17 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">别墅楼梯改造
+客厅 多出 6㎡</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前后楼梯与挑空同角度）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：楼梯一镜到底上二楼）口播：140㎡横厅，楼梯挪了个位置，客厅多出6㎡
+3-8s 结论前置：别墅楼梯是全屋的视线核心，不是交通核
+8-20s 点1 位置决定客厅视线：改成【待填】形成对视
+20-32s 点2 取消包板做挑空+细扶手，避免压视线
+32-44s 点3 楼梯下方做可开合空间（平时储藏，聚会开吧台）
+44-54s 真实数据：视觉进深多【待填】m，下方多【待填】㎡
+54-60s CTA：评论区扣「楼梯」领挑空尺度参考</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">别墅的楼梯是全屋最小的空间，却经常做错：封闭、压抑、采光差，还吃掉楼梯下方一大块 unusable 面积</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主原方案：把楼梯包起来做收纳 + 玻璃栏板。效果是楼梯间变成一个黑盒子，客厅与二层之间没有视线联系，客厅显得更小</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">别墅楼梯的三个方向，本项目选的是「挑空 + 视觉打通」：；① 楼梯位置决定客厅视线：改成【待填：位置】，让二层与客厅形成对视关系
+② 取消包板，做挑空 + 栏板（材质【待填：材料】），客厅进深视觉上多出一截；③ 楼梯下方做「可开合」空间：平时关起来做储藏，聚会时打开做吧台/展示
+④ 踏步与扶手细节：挑空高度【待填：米】m 时，扶手不做实心板，改细扶手 + 竖向线条，避免压视线；这套思路和酒店楼梯间一致：让视线穿透，而不是切断</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，楼梯位置从【待填：原位置】调整为【待填：新位置】；挑空高度【待填：米】m，楼梯下方可用空间【待填：面积】㎡
+客厅视觉进深增加约【待填：米】m；楼梯造价【待填：金额】，工期增加【待填：天】天</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">别墅的楼梯不是交通核，是全屋的视线核心
+收藏这篇，见设计师时把「视线」两个字说清楚
+评论区扣「楼梯」，发你一份挑空尺度参考</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#别墅楼梯</span><span>#别墅挑空</span><span>#别墅设计</span><span>#成都别墅</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#成都装修</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套楼梯挪了位置，客厅和二层形成对视，视觉进深多了约【待填：米】m，楼梯下方还多出【待填：面积】㎡ 可开合空间。要挑空尺度参考，评论区扣「楼梯」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>改造前楼梯与客厅实景 2 张</li><li>改造后同角度实景 3 张</li><li>楼梯结构与视线分析图 1 张</li><li>扶手与踏步细节特写 2 张</li><li>造价明细 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 结构改动须说明已核对结构图并经物业确认</li><li>□ 尺寸数据须与实物一致</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「别墅楼梯」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周六拍完工 → 周日 09:00 写骨架填真实尺寸</li><li>09:30 排版 9 张</li><li>11:00 发布</li><li>12:00 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D15">
+<div class="dh"><h3>D15　400㎡大平层改造｜砍掉3项，预算反而降</h3><span class="m">周一 12:30　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜痛点反共识型</span><span class="tag ">图文</span><span class="tag">连载 EP2</span><br>核心搜索词：大平层改造、大平层装修、大平层装修预算　｜　长尾：400平装修、大平层改造案例、成都大平层</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：400㎡大平层改造｜砍掉3项，预算反而降　<span style="color:var(--muted);font-size:12px">（20 字）</span></li>
+<li><b>变体 A</b>：大平层改造≠多花钱：400㎡预算反而降了　<span style="color:var(--muted);font-size:12px">（20 字）</span></li>
+<li><b>变体 B</b>：大平层装修怎么省：把钱从造型挪到机电　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">400㎡大平层改造
+砍3项预算反降</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前后同角度 3 组）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">大平层的钱最容易花错地方：造型和造型、造型和造型。面积越大，造型的钱堆得越厚，住进去越不值</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目业主原方案的加项：客厅背景墙造型、吊顶灯带造型、地面拼花造型，每项看着高级，合计【待填：金额】万；入住后最常被吐槽的是插座不够、储物不足、新风不够</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">400㎡ 的预算按「每天能感觉到的」重新排：；① 优先机电：暖通、新风、全屋智能、水处理——别墅/大平层最容易低估的一项
+② 其次收纳：按 D12 的 8 个位置 + 4 层分区；③ 其次灯光与材质
+④ 最后才是造型；把造型预算挪到这三项，总价往往不升反降</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，原方案报价【待填：金额】万，最终结算【待填：金额】万
+造型类支出从【待填：金额】降到【待填：金额】
+省下的【待填：金额】投入：机电增加【待填：金额】、柜体【待填：数量】组（净增【待填：面积】㎡）、灯位从【待填：数量】个增至【待填：数量】个、插座增加【待填：数量】个</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">改善型不是加价，是换配比
+收藏这篇，下次和设计师谈方案时先问：造型预算能不能挪给机电和收纳
+评论区说说你想加钱的地方，我帮你看这笔钱值不值</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#大平层改造</span><span>#大平层装修</span><span>#成都大平层</span><span>#装修预算</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#成都装修</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 原报价【待填：金额】万，最终结算【待填：金额】万。造型省下的钱换成了【待填：数量】组柜体和【待填：数量】个灯位。评论区说你想加钱的地方，我帮你看值不值。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>改造前后同角度 3 组（客厅 / 主卧 / 餐厅）</li><li>预算对比表 1 张（原方案 vs 结算）</li><li>机电设备清单 1 张</li><li>柜体与插座数量对照图 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 金额数据必须与真实结算单一致</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「大平层改造」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周日拍完工 → 周一 09:00 写骨架 + 填真实结算</li><li>11:30 排版 9 张</li><li>12:30 发布</li><li>13:30 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day rest" id="D16">
+<div class="dh"><h3>D16　周二　机动备料日</h3><span class="m">不发帖 · 专门备料</span></div>
+<div class="blk"><div class="bt">这天做什么</div><div class="seg"><div class="sx">D17 素材：全屋定制合同条款实拍 1 张（打码）、报价单 1 张（打码）、别墅工地实拍 1 张
+顺带把手上项目的授权状态表更新一遍——这是本赛道最卡的一环</div></div></div>
+<div class="blk"><div class="bt">提醒</div><ul class="chk"><li>不发帖日；合同与报价单一律先打码再拍</li><li>别墅业主对「被坑」极度敏感，这条笔记必须靠真实条款说话，不能靠情绪</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>拍 D17 素材（40 min）</li><li>更新授权状态表 + 拆解表（30 min）</li></ul></div>
+</div>
+<div class="day" id="D17">
+<div class="dh"><h3>D17　别墅全屋定制避坑：合同少这4项就加钱</h3><span class="m">周三 20:00　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag ta">避坑｜痛点反共识型</span><span class="tag tv">视频</span><br>核心搜索词：全屋定制避坑、别墅全屋定制、别墅定制　｜　长尾：定制柜避坑、全屋定制合同、别墅定制增项</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：别墅全屋定制避坑：合同少这4项就加钱　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 A</b>：全屋定制避坑指南｜这4项不写必被加钱　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 B</b>：别墅定制合同｜4项没写就等着被加钱　<span style="color:var(--muted);font-size:12px">（17 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">别墅全屋定制避坑
+合同少4项就加钱</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：大字（合同条款实拍打码做底）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：结算单与报价单并排，差额红圈）口播：别墅定制，差价不在板材，在这4项
+3-8s 结论前置：计价口径 / 见光板 / 特殊工艺 / 五金型号
+8-20s 点1 投影面积 vs 展开面积（差20%-40%）
+20-32s 点2 见光板封板收口（别墅异形多）
+32-44s 点3 斜切/圆弧/高柜计价 + 五金写品牌
+44-54s 真实数据：本项目报价【待填】结算【待填】，加上这4条实际签价【待填】
+54-60s CTA：评论区扣「定制」领合同条款清单</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">别墅的柜体量大，定制报价低但结算高，几乎每个业主都会遇到。差价不在板材，在没写进合同的项目</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目业主原报价【待填：金额】万，结算【待填：金额】万。差价最大一项是【待填：项目】，加价【待填：金额】，理由是「这本来就该另算」</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">别墅全屋定制合同必须写清这 4 项，否则一定被加钱：；① 计价口径：按「投影面积」还是「展开面积」算（差 20%-40%），写死；别墅有异形，有报价单是按展开算的
+② 见光板 / 封板 / 收口：是否包含、单价多少——别墅异形多，这一项金额常超预期；③ 特殊工艺计价：斜切、圆弧、异形、高柜、超高门板，分别怎么算
+④ 五金：铰链 / 导轨 / 拉篮的品牌与型号，写品牌不写「标配」；另外加一条：别墅顶天立地柜与现场墙体误差的容差范围</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目定制总报价【待填：金额】，结算【待填：金额】，差【待填：金额】
+其中见光板【待填：金额】、五金升级【待填：金额】、异形【待填：金额】、其他【待填：金额】
+加上这 4 条后实际签价【待填：金额】（比原结算省【待填：金额】）</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">别墅的柜体量比平层大一倍，合同的每一项都对应真金白银
+收藏这篇，见定制方时直接念这 4 条
+评论区扣「定制」，发你一份合同条款清单</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#全屋定制</span><span>#定制家具避坑</span><span>#别墅装修</span><span>#装修增项</span><span>#装修避坑</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：差价最大的一项是【待填：项目】，因为合同写的是「按实际计价」。加上这 4 条后实际签价【待填：金额】，比原结算省【待填：金额】。要条款清单，评论区扣「定制」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>合同条款实拍 1 张（姓名/电话/地址/金额/公司全打码）</li><li>报价单实拍 1 张（打码）</li><li>别墅定制柜安装现场 1 张</li><li>最终结算对比表 1 张（真实数据）</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 合同与报价单必须打码：姓名、电话、地址、金额、账号、公司名</li><li>□ 不得影射或指名具体商家</li><li>□ 不得提供规避合同的法律意见</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「全屋定制」在前 15 字</li><li>□ 标签 8 个（取 8）</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周二已备素材 → 周三 09:00 写骨架填真实金额</li><li>09:40 排版 7 张</li><li>20:00 发布</li><li>21:00 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day rest" id="D18">
+<div class="dh"><h3>D18　周四　机动备料日</h3><span class="m">不发帖 · 专门备料</span></div>
+<div class="blk"><div class="bt">这天做什么</div><div class="seg"><div class="sx">D19 素材：别墅交付现场实拍 2 张、验收清单页 1 张（15 项打印版）、设备铭牌/接口特写 1 张</div></div></div>
+<div class="blk"><div class="bt">提醒</div><ul class="chk"><li>不发帖日；别墅验收清单要覆盖机电和庭院，这是与普通验房的区别</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>拍 D19 验收素材（40 min）</li><li>写 D19 的 15 项清单（30 min）</li></ul></div>
+</div>
+<div class="day" id="D19">
+<div class="dh"><h3>D19　别墅交付验收攻略：15项清单，照着查</h3><span class="m">周五 20:00　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag td">干货｜清单攻略型</span><span class="tag ">图文</span><br>核心搜索词：别墅验收、别墅交付、验收清单　｜　长尾：别墅验房、装修验收清单、交房验收</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：别墅交付验收攻略：15项清单，照着查　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 A</b>：别墅验收别只看好不好看：15项照着查　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 B</b>：大平层交房验收清单：15项1小时查完　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">别墅验收 15 项
+交房当天照着走</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：大字（清单页做主视觉）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">别墅验收最容易只看「好不好看」，把设备、防水、排水、五金这些后期极难返工的项目放过去</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">常见做法：验收当天看墙面、地面、柜子，收工。本项目一套【待填：户型】交付时跳过了新风风量测试和地下室防水测试，入住后分别出现【待填：问题】和【待填：问题】</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">别墅/大平层交付当天按这 15 项查（每项都有对应动作）：；① 墙面空鼓与裂缝（空鼓锤）；② 地面沉降与空鼓；③ 厨房卫生间排水通畅与返味；④ 防水高度与闭水试验；⑤ 新风系统风量与漏风
+⑥ 中央空调/地暖运行与分区；⑦ 全屋智能点位与联动（灯光、窗帘、空调）；⑧ 电路回路数与漏保测试；⑨ 水压与角阀；⑩ 门窗密封与开启；⑪ 楼梯踏步与扶手牢固
+⑫ 地下室防潮与除湿运行；⑬ 庭院排水坡度与灌溉；⑭ 柜体五金与门缝垂直度；⑮ 设备铭牌与保修资料齐全</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，交付核验共【待填：数量】项，发现问题【待填：数量】项，其中需整改【待填：数量】项
+整改工期【待填：天】天，费用【待填：元】
+核验清单与整改闭环文档各 1 份（真实工程沟通记录）</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">别墅验收比普通住宅多 5 项：机电、庭院、地下室、楼梯、智能联动
+收藏这篇，交房那天带着手机照着查
+评论区扣「验收」，发你这份 15 项清单</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#别墅验收</span><span>#装修验收</span><span>#交房验收</span><span>#成都别墅</span><span>#装修避坑</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：第 ⑤ 和 ⑫ 项最容易被跳过——新风风量和地下室防潮。这套【待填：面积】㎡ 核验【待填：数量】项，查出问题【待填：数量】项，整改工期【待填：天】天。要清单，评论区扣「验收」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>别墅交付现场实拍 2 张</li><li>15 项验收清单页 1 张</li><li>新风 / 空调 / 智能面板铭牌与接口特写 1 张</li><li>整改闭环记录截图（脱敏 + 已授权）</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 验收结论必须基于真实核验，不得泛化</li><li>□ 不得对未检查项给结论</li><li>□ 整改记录须脱敏并已授权</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「别墅验收」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周四已备素材 → 周五 09:00 写骨架 + 填真实问题数量</li><li>09:40 排版 7 张</li><li>20:00 发布</li><li>21:00 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D20">
+<div class="dh"><h3>D20　12㎡厨房改中西分厨：大平层也能双动线</h3><span class="m">周六 10:30　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜结果前置型</span><span class="tag ">图文</span><span class="tag">连载 EP3</span><br>核心搜索词：大平层厨房、中西厨房、厨房改造、中西分厨　｜　长尾：大平层厨房设计、别墅厨房、中西厨房</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：12㎡厨房改中西分厨：大平层也能双动线　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 A</b>：大平层厨房改造｜中西分厨怎么做　<span style="color:var(--muted);font-size:12px">（15 字）</span></li>
+<li><b>变体 B</b>：12㎡厨房改造：双台面+洗切炒动线　<span style="color:var(--muted);font-size:12px">（17 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">中西分厨+双台面
+12㎡大平层厨房</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前后厨房同角度）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">大平层的厨房面积其实不小，但常被浪费在「一个巨大台面 + 一排电器」上；中西混用时更要命，两套排烟排到打架</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主原方案：中西厨打通做岛台。问题是炒锅油烟直冲客厅、冰箱开门堵住过道、扫地机器人没有落脚点</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">大平层/别墅厨房的正确分法：；① 中厨（重油重热）封闭独立，做双开排烟；西厨（轻食咖啡）开放做岛台
+② 两条动线不交叉：中厨备餐 → 西厨出餐，中间只经一个传菜口；③ 冰箱落位避开主通道与西厨门，开启半径要画出来
+④ 电器按使用频率分层：高频（咖啡机 / 洗碗机 / 净水）在一层台面，低频（蒸烤 / 嵌入式储物）在高柜；⑤ 台面净宽留足：切配区 ≥【待填：mm】mm，吊柜不压在这一段上方</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目厨房【待填：面积】㎡，中厨【待填：面积】㎡ / 西厨【待填：面积】㎡；台面总长【待填：米】m，切配区净宽【待填：mm】mm
+中厨排烟风量【待填：m³/h】，西厨传菜口【待填：mm】mm；冰箱位置与通道净宽【待填：mm】mm，电器共【待填：数量】台</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">大平层的厨房不该只有一个油烟机：重油重热和轻食咖啡必须分开
+收藏这篇，量房时先定中西厨边界
+评论区扣「厨房」，发你一份中西厨布局自查图</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>7 个</small></div><div class="tags"><span>#大平层厨房</span><span>#别墅厨房</span><span>#厨房设计</span><span>#成都装修</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 厨房，中厨【待填：面积】㎡ 独立双开排烟，西厨【待填：面积】㎡ 做岛台，中间一个【待填：mm】mm 传菜口。两条动线不交叉。要布局思路，评论区扣「厨房」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>改造前厨房实景 1 张</li><li>改造后同角度实景 2 张（含中厨、西厨、传菜口）</li><li>中西厨动线与排烟分区图 1 张</li><li>台面尺寸图 1 张</li><li>电器与五金清单 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 排烟、燃气相关建议须符合当地规范，不得给违规改燃气建议</li><li>□ 尺寸数据须与实拍一致</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「大平层厨房」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周五拍完工 → 周六 09:00 写骨架填真实尺寸</li><li>09:30 排版 9 张</li><li>10:30 发布</li><li>11:30 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D21">
+<div class="dh"><h3>D21　地下室别做暗：采光问题3个解法</h3><span class="m">周日 11:00　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag ta">避坑｜痛点反共识型</span><span class="tag tv">视频</span><br>核心搜索词：地下室装修、地下室、地下室采光　｜　长尾：地下室采光、地下室除湿、地下室通风</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：地下室别做暗：采光问题3个解法　<span style="color:var(--muted);font-size:12px">（15 字）</span></li>
+<li><b>变体 A</b>：别墅地下室避坑｜最贵的错误是封死　<span style="color:var(--muted);font-size:12px">（16 字）</span></li>
+<li><b>变体 B</b>：地下室采光攻略：3种把光引进来的做法　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">地下室别做暗
+采光 3 个解法</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前 vs 改造后同角度）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：地下室全亮惨白灯）口播：地下室最贵的错误，是把它封死
+3-8s 结论前置：能不能用看层高、看采光口、看通风，不看灯
+8-20s 点1 层高【待填】m 才谈得上影音环绕/下沉庭院
+20-32s 点2 采光井+导光管把光引下来（画面：采光井实拍）
+32-44s 点3 新风独立一路 + 恒温除湿，防水做迎水面
+44-54s 真实数据：新增采光井【待填】㎡，照明功率【待填】W→【待填】W，湿度【待填】%→【待填】%
+54-60s CTA：评论区扣「地下室」领可行性判断表</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">地下室在别墅里占了面积的大头，但默认做法是「封起来做房间」，于是采光靠全灯、返潮靠除湿机、住着像地下室</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目另一套【待填：户型】：地下室【待填：面积】㎡，层高【待填：米】m，无采光口，业主反馈：白天也要开灯，墙面每到回南天就发霉</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">地下室能不能用，看三个条件，不是靠灯：；① 层高：【待填：米】m 以上才谈得上做影音环绕、下沉庭院、夹层
+② 采光口：能开窗就开窗，开不了就做「采光井 + 导光管 / 反光镜」把光引下来；③ 通风与除湿：新风独立一路 + 恒温除湿，防水在迎水面做而不是只做背水面
+这套我们用的是第 2 条：原来封闭的侧墙开【待填：面积】㎡ 采光井，引入【待填：时段】的自然光</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目地下室【待填：面积】㎡，层高【待填：米】m；新增采光井【待填：面积】㎡，引入自然光时段【待填：时段】
+新风独立一路风量【待填：m³/h】，除湿能力【待填】；照明功率从【待填：W】W 降到【待填：W】W
+回南天墙面湿度实测从【待填：%】降到【待填：%】</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">地下室值不值钱，看层高和采光，不看面积
+收藏这篇，量房时量层高、找可开窗的墙面
+评论区扣「地下室」，发你一份地下室可行性判断表</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#地下室装修</span><span>#别墅地下室</span><span>#地下室采光</span><span>#成都别墅</span><span>#装修避坑</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套地下室【待填：面积】㎡ 层高【待填：米】m，原来无采光。我们开了【待填：面积】㎡ 采光井，引入【待填：时段】自然光，照明功率从【待填：W】W 降到【待填：W】W。要解法，评论区扣「地下室」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>改造前地下室实景 2 张</li><li>改造后同角度实景 3 张（含采光井）</li><li>层高与采光井剖面图 1 张</li><li>新风与除湿设备实景 1 张</li><li>湿度实测记录 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 防水与通风建议须符合当地规范</li><li>□ 湿度与风量数据须来自真实项目实测，不得编造</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「地下室装修」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周六拍完工 → 周日 09:00 写骨架填真实数据</li><li>09:30 排版 9 张</li><li>11:00 发布</li><li>12:00 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D22">
+<div class="dh"><h3>D22　240㎡大平层入户：玄关改成酒店式序厅</h3><span class="m">周一 12:30　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜结果前置型</span><span class="tag ">图文</span><span class="tag">连载 EP4</span> <span class="tag ta">★ 酒店体验做进私宅</span><br>核心搜索词：大平层玄关、酒店式入户、大平层入户　｜　长尾：大平层玄关设计、酒店式入户、大平层入户</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：240㎡大平层入户：玄关改成酒店式序厅　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 A</b>：大平层玄关改造｜把空厅变成酒店式入户　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 B</b>：大平层入户做三段：玄关→过渡厅→客厅　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">240㎡大平层入户
+玄关改成酒店序厅</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前后入户玄关同角度）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">大平层的入户常被浪费：一进门是【待填：米】m 的空厅或长走廊，鞋、伞、外套、包、快递全堆在一处，回家第一眼很挫败</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主原方案：入户做一整排通顶鞋柜 + 大理石墙面。功能没问题，但回家动线没变：进门 → 换鞋 → 穿过长走廊 → 客厅，全程一条直线，没有缓冲</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">抄酒店的入户逻辑（酒店大堂到客房之间那段路）：；① 进门缓冲区：进门 1.5-2m 内不做高柜，给「停下来」留位置
+② 三段式：玄关（放物 + 换鞋）→ 过渡厅（展示 + 缓冲）→ 客厅；③ 换鞋凳做悬空，底部留空，鞋直接推进去
+④ 顶面暗藏灯带，把「进门」和「回家」的光分开：进门是亮，回家是暗；⑤ 电梯厅如果是大平层独用厅，这是最贵的 2㎡，要做成入户序厅：材质 + 灯 + 一件艺术品，业主每天经过</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，入户厅原【待填：米】m ×【待填：米】m；改造后划分三段：玄关【待填：米】m / 过渡厅【待填：米】m / 进入客厅
+玄关柜体长【待填：米】m，鞋位【待填：数量】个，悬空凳底部留空【待填：mm】mm；灯带【待填：米】m，色温【待填：K】K
+电梯厅/公共厅材质与工艺：【待填：清单】</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">你在酒店最舒服的那几分钟，不是大堂，是大堂到房门那段路
+收藏这篇，把自家入户也按三段重排一遍
+评论区扣「大平层」，发你一份入户三段分区表</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>7 个</small></div><div class="tags"><span>#大平层设计</span><span>#大平层玄关</span><span>#玄关设计</span><span>#成都装修</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 入户厅原来【待填：米】m，我们分成玄关 / 过渡厅 / 客厅三段，鞋位【待填：数量】个。酒店大堂到客房那段路，说的就是这段过渡。要入户思路，评论区扣「大平层」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>改造前后入户玄关同角度各 2 张</li><li>入户三段分区与灯位图 1 张</li><li>换鞋凳与灯带细节特写 2 张</li><li>电梯厅/公共厅实景 1 张</li><li>柜体与灯具清单 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 案例三件套齐全：改造前 + 户型图 + 分空间实景</li><li>□ 涉及公共区域的画面须确认可公开（涉及开发商与物业规定）</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「大平层设计」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周日拍完工 → 周一 09:00 写骨架填真实数据</li><li>11:30 排版 9 张</li><li>12:30 发布</li><li>13:30 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day rest" id="D23">
+<div class="dh"><h3>D23　周二　机动备料日</h3><span class="m">不发帖 · 专门备料</span></div>
+<div class="blk"><div class="bt">这天做什么</div><div class="seg"><div class="sx">D24 素材：别墅装修报价单与结算对比实拍 2 张（打码）、增项现场 1 张
+顺便把「成都本地建材品牌 / 展厅」的线下探店素材拍一些，后期做商单测试用</div></div></div>
+<div class="blk"><div class="bt">提醒</div><ul class="chk"><li>不发帖日；别墅增项类内容必须靠真实结算单说话，不能只讲道理</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>拍 D24 素材（40 min）</li><li>探店素材（可选，30 min）</li></ul></div>
+</div>
+<div class="day" id="D24">
+<div class="dh"><h3>D24　别墅装修增项避坑：这5项不提前定多花20%</h3><span class="m">周三 20:00　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag ta">避坑｜痛点反共识型</span><span class="tag tv">视频</span><br>核心搜索词：别墅装修增项、别墅装修预算　｜　长尾：别墅装修多少钱、成都别墅预算、别墅增项</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：别墅装修增项避坑：这5项不提前定多花20%　<span style="color:var(--muted);font-size:12px">（21 字）</span></li>
+<li><b>变体 A</b>：别墅装修预算攻略｜超支都在这5项　<span style="color:var(--muted);font-size:12px">（16 字）</span></li>
+<li><b>变体 B</b>：别墅装修增项盘点：5项占超支额70%　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">别墅增项 5 项
+占超支额 70%</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：大字（报价单与结算对比做底）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：5 项超支明细逐条弹出）口播：别墅超支的钱，一个大件都没有
+3-8s 结论前置：超支都在这5项里
+8-20s 点1 地下室专项（防潮/排水/保温/采光口）
+20-32s 点2 庭院户外（铺装/挡墙/排水/灌溉/灯光）
+32-42s 点3 机电升级 / 结构加固 / 定制异形
+42-52s 真实数据：本项目超【待填】%，5项占【待填】%，最大一项占【待填】%
+52-60s CTA：评论区扣「超支」领备用金算法</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">别墅超支很少是因为「买贵的」，而是因为后期新增了当初没人算的项目</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目一位业主：签约【待填：金额】万，结算【待填：金额】万，超【待填：%】%。拆开看，5 项占了【待填：%】%，其中「地下室专项」和「庭院」两项就占【待填：%】%</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">别墅最常超支的 5 项（按占比排）：；① 地下室专项：防潮、排水、保温、采光口；② 庭院 / 户外：铺装、挡墙、排水、灌溉、灯光
+③ 机电升级：地暖、新风、全屋智能、智能家居的联动调试；④ 结构拆改与加固（老别墅尤其常见）；⑤ 定制异形：弧形、斜切、超高柜的现场误差
+每项的做法：合同里写清计价方式 + 预留【待填：%】% 专项备用金</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，签约【待填：金额】万，结算【待填：金额】万，超【待填：%】%（超【待填：金额】万）
+5 项占比：①【待填：%】②【待填：%】③【待填：%】④【待填：%】⑤【待填：%】
+按建议预留专项备用金后，实际超支【待填：金额】万，在控</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">别墅超支的钱，不在大件，在这 5 项里
+收藏这篇，签合同前逐项问「这项怎么计价」
+评论区扣「超支」，发你一份备用金算法</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#别墅装修预算</span><span>#别墅装修</span><span>#装修超支</span><span>#成都别墅</span><span>#装修避坑</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 超支【待填：金额】万，5 项里最大一项是【待填：项】，占【待填：%】%。别墅和平层最大的差别就在地下室和庭院这两项。要备用金算法，评论区扣「超支」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>报价单与结算对比实拍 2 张（打码）</li><li>增项现场实景 1 张</li><li>超支明细表 1 张（真实数字）</li><li>备用金计算示意 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 金额与百分比必须与真实结算一致</li><li>□ 禁「最省钱」等绝对化用语</li><li>□ 单据必须打码</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「别墅装修预算」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周二已备素材 → 周三 09:00 写骨架 + 填真实超支数据</li><li>09:40 排版 7 张</li><li>20:00 发布</li><li>21:00 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day rest" id="D25">
+<div class="dh"><h3>D25　周四　机动备料日</h3><span class="m">不发帖 · 专门备料</span></div>
+<div class="blk"><div class="bt">这天做什么</div><div class="seg"><div class="sx">D26 素材：别墅与大平层客厅实景 2 张（三路开关面板同框）、灯位与洗光高度图 1 张</div></div></div>
+<div class="blk"><div class="bt">提醒</div><ul class="chk"><li>不发帖日；灯光类素材要拍到开关面板，观众才能看懂「分几路」</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>拍 D26 素材（40 min）</li><li>写 D26 骨架（30 min）</li></ul></div>
+</div>
+<div class="day" id="D26">
+<div class="dh"><h3>D26　大平层灯光攻略：3层回路+8个位置</h3><span class="m">周五 20:00　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag td">干货｜清单攻略型</span><span class="tag tv">视频</span><br>核心搜索词：大平层灯光设计、大平层灯光、灯光分层、别墅灯光　｜　长尾：大平层灯光、别墅灯光设计、无主灯、灯光分层</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：大平层灯光攻略：3层回路+8个位置　<span style="color:var(--muted);font-size:12px">（17 字）</span></li>
+<li><b>变体 A</b>：别墅灯光清单：3层回路，照抄8个位置　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 B</b>：大平层灯光怎么布｜3层回路8个位置　<span style="color:var(--muted);font-size:12px">（17 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">大平层灯光攻略
+3层回路8位置</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：细节特写（三路开关面板 + 灯光效果）</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：三个开关面板 + 一键切换灯光）口播：大宅灯光，3层回路就够了
+3-8s 结论前置：基础 / 氛围 / 功能，三路分开
+8-20s 点1 基础回路：均匀照度负责看清（画面：全亮）
+20-32s 点2 氛围回路：挑空墙/沙发背/床背/柜内（画面：只开氛围）
+32-42s 点3 功能回路：阅读/餐桌/玄关/化妆/楼梯/庭院/镜前/厨房台面
+42-52s 真实数据：本项目【待填】㎡，灯位【待填】个分【待填】路，色温【待填】K
+52-60s CTA：评论区扣「灯光」领8个位置图</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">200㎡+ 的房子灯少不是问题，问题是全屋只有一路开关——想要氛围就没有，想要看清就太亮</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">常见做法：客厅全屋一个回路。业主反映：晚上想调暗，只能关掉主灯开灯带，结果是「看不清人」或「刺眼」二选一</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">200㎡+ 的灯光按三层回路 + 8 个位置来排：；三层回路：；① 基础回路：均匀照度，负责看清（可调角度洗墙，不做中心大灯）
+② 氛围回路：挑空墙面、沙发背、床背、柜内，负责放松；③ 功能回路：阅读、餐桌、玄关、化妆、楼梯、庭院、卫生间镜前、厨房台面；8 个必装位置：挑空墙 / 沙发背墙 / 床背 / 衣帽间内 / 楼梯踏步 / 玄关 / 镜前 / 庭院
+一条简单判断：站在地上，墙面是不是亮的——不亮就是缺洗光</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，灯位【待填：数量】个，回路【待填：数量】路；基础【待填：数量】个 / 氛围【待填：数量】个 / 功能【待填：数量】个
+色温统一【待填：K】K，显色指数【待填：Ra】；总功率【待填：W】W，客餐厅单位面积功率【待填：W/㎡】
+智能联动：面板【待填：数量】个，支持【待填：场景】</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">3 层回路 + 8 个位置，这是大宅灯光的通用骨架
+收藏这篇，见灯光设计师时对着报
+评论区扣「灯光」，发你一份回路位置图</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>7 个</small></div><div class="tags"><span>#大平层灯光设计</span><span>#别墅灯光设计</span><span>#灯光设计</span><span>#成都装修</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 灯位【待填：数量】个分【待填：数量】路，8 个位置是固定的：挑空墙、沙发背、床背、衣帽间、楼梯、玄关、镜前、庭院。要清单，评论区扣「灯光」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>别墅/大平层客厅实景 2 张</li><li>三路开关面板与灯位同框特写 1 张</li><li>灯位与洗光高度图 1 张</li><li>灯具清单 1 张</li><li>智能面板与场景实拍 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 回路数量与功率须与本项目实际一致</li><li>□ 禁「最亮」「最护眼」等绝对化用语</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「大平层灯光设计」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周四已备素材 → 周五 09:00 写骨架 + 填真实灯位数据</li><li>09:40 排版 7 张</li><li>20:00 发布</li><li>21:00 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D27">
+<div class="dh"><h3>D27　叠拼别墅改造：只打通一半，换来挑空客厅</h3><span class="m">周六 10:30　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜结果前置型</span><span class="tag ">图文</span><br>核心搜索词：叠拼别墅改造、别墅改造　｜　长尾：叠拼别墅改造、别墅打通、联排别墅设计</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：叠拼别墅改造：只打通一半，换来挑空客厅　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+<li><b>变体 A</b>：叠拼别墅改造｜打通前必须查这3件事　<span style="color:var(--muted);font-size:12px">（17 字）</span></li>
+<li><b>变体 B</b>：成都叠拼别墅改造：错层0.9m怎么打通　<span style="color:var(--muted);font-size:12px">（19 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">叠拼别墅改造
+只打通一半</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（改造前后同角度 3 组）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">叠拼/联排最容易的误区：以为打通就等于更好。打通后采光、排水、楼梯归属、产权边界全要重新算</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主原方案：把下叠与上叠的挑空部分打通做一个通高客厅。我们现场复尺发现两户错层【待填：米】m、柱网不对位、雨水管位置冲突——方案直接推翻</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">叠拼改造的三个判断顺序：；① 先看能不能拆：错层、柱网、雨水管、外立面和产权边界，任何一项不允许，就别想了
+② 再看值不值得：打通后是否解决真实问题（本项目是解决「客厅层高不够 + 上叠没有独立入户」）；③ 打通之后补什么：楼梯位置、入户动线、防水与排水边界
+本项目最终只打通了【待填：部分】，保留了【待填：部分】的原状，各取所需</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目下叠【待填：面积】㎡ + 上叠【待填：面积】㎡，错层【待填：米】m；打通部分【待填：面积】㎡，新增通高客厅【待填：面积】㎡，挑高【待填：米】m
+新增独立入户 1 处；楼梯由【待填：原】调整为【待填：新】；工期【待填：天】天，造价【待填：金额】</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">打通不是越多越好，是刚好解决那个问题才值得
+收藏这篇，量房时先查错层、柱网和雨水管
+评论区扣「叠拼」，发你一份可行性判断顺序</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#叠拼别墅</span><span>#别墅改造</span><span>#别墅设计</span><span>#成都别墅</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#成都装修</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套叠拼错层【待填：米】m，我们只打通了【待填：部分】，换来一个挑高【待填：米】m 的通高客厅和 1 个独立入户。打通不是越多越好。要判断顺序，评论区扣「叠拼」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>改造前后同角度 3 组</li><li>上下叠错层与柱网图 1 张</li><li>楼梯调整前后对照 1 张</li><li>产权/外立面限制文件说明 1 张（脱敏）</li><li>预算与工期 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 涉及产权、外立面、结构的内容必须说明「已核对图纸并经物业与相关部门确认」，不得给违规搭建建议</li><li>□ 数据须真实</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「别墅改造」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周五拍完工 → 周六 09:00 写骨架填真实数据</li><li>09:30 排版 9 张</li><li>10:30 发布</li><li>11:30 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D28">
+<div class="dh"><h3>D28　别墅材料盘点：5种耐看且不贵</h3><span class="m">周日 11:00　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜清单攻略型</span><span class="tag ">图文</span> <span class="tag ta">★ 酒店体验做进私宅</span><br>核心搜索词：别墅材料、耐看材质、别墅选材、大宅选材　｜　长尾：别墅装修材料、耐看材质、大宅材质选择</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：别墅材料盘点：5种耐看且不贵　<span style="color:var(--muted);font-size:12px">（14 字）</span></li>
+<li><b>变体 A</b>：别墅材料攻略：5种扛得住10年的选择　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 B</b>：大宅选材别追新款：5种耐看做法　<span style="color:var(--muted);font-size:12px">（15 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">别墅材料盘点
+5 种耐看不贵</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：细节特写（3 种材质特写并列）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">200㎡+ 的面积放大一切：材质差一点点，整屋都显出来；追新款最危险，因为「新款」的寿命通常只有 2-3 年</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">业主最初想用【待填：材料】，理由是「现在流行」。我们换成同色系哑光砖 + 哑光不锈钢 + 木纹哑光柜体，整屋反而更整，单价更低</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">大宅选材的 5 条（抄酒店耐看逻辑，不是抄价格）：；① 同色系收口：地面、墙面、柜体主色控制在【待填：数量】色以内；② 哑光优先：哑光不显指纹和划痕，这是酒店大量用哑光的原因
+③ 纹理克制：主材只允许一种纹理（木纹或石纹），其余纯色；④ 面积越大越要哑光：大面积高光会放大光线不均和施工瑕疵；⑤ 看 5 年后的样子：问自己「这套材料五年后还愿意每天看吗」
+这 5 条决定「耐看不贵」，而不是单价</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目主材：①【待填：材料/单价】②【待填：材料/单价】③【待填：材料/单价】④【待填：材料/单价】⑤【待填：材料/单价】；对比业主原方案【待填：材料/单价】，差价【待填：元】/㎡
+主色【待填：数量】种，纹理【待填：数量】种；入住【待填：月】后业主回访：没有出现「看腻」反馈</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">大宅选材，先问「五年后还愿意每天看吗」
+收藏这篇，见材料商时按这 5 条筛
+评论区扣「材料」，发你一份选材自查清单</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#别墅材料</span><span>#装修材料</span><span>#耐看材质</span><span>#成都别墅</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span><span>#成都装修</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套主材单价【待填：材料/单价】，比业主原方案低【待填：元】/㎡，主色控制在【待填：数量】种。大宅最忌讳高光大面积。要选材清单，评论区扣「材料」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>5 种材质特写各 2 张</li><li>选材对比图 1 张</li><li>真实单价清单 1 张</li><li>柜体与墙面收口特写 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 材质须为本项目真实使用材料</li><li>□ 单价须为真实采购价或标注参考区间</li><li>□ 禁「最便宜」等绝对化用语</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「别墅材料」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周六拍完工 → 周日 09:00 写骨架填真实单价</li><li>09:30 排版 8 张</li><li>11:00 发布</li><li>12:00 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D29">
+<div class="dh"><h3>D29　大平层量房避坑：这3处漏了全返工</h3><span class="m">周一 12:30　视频</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag ta">避坑｜痛点反共识型</span><span class="tag tv">视频</span><br>核心搜索词：大平层量房、量房、量房避坑　｜　长尾：量房流程、量房注意事项、别墅量房</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：大平层量房避坑：这3处漏了全返工　<span style="color:var(--muted);font-size:12px">（16 字）</span></li>
+<li><b>变体 A</b>：量房攻略：大平层必量这3类尺寸　<span style="color:var(--muted);font-size:12px">（15 字）</span></li>
+<li><b>变体 B</b>：大平层量房清单｜漏了，后面全得拆　<span style="color:var(--muted);font-size:12px">（16 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">大平层量房避坑
+漏 3 处全返工</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：真人 + 图纸</div></div>
+<div class="blk"><div class="bt">视频分镜 <small>本篇形式：视频（实测：避坑类爆款 100% 是视频）</small></div><div class="script">0-3s 钩子（画面：卷尺量层高，数字打出来）口播：大平层量房，别只量面积
+3-8s 结论前置：漏这3类，后面全返工
+8-20s 点1 高度类：净层高/梁底/挑空边界/窗台高差/空调吊顶净高
+20-32s 点2 位置类：管井/烟道/雨水管/上下水/地漏/燃气立管/庭院标高
+32-42s 点3 尺寸类：门洞/柜体净宽/异形柱/插座离地高
+42-52s 真实数据：本项目实测【待填】项，与图纸不符【待填】处，省返工约【待填】元
+52-60s CTA：评论区扣「量房」领200㎡+量房清单</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">大平层/别墅的量房看起来简单——面积大、图纸规整。真正出问题的是：层高、梁、管线、窗台高差、洞口尺寸，这些没量，图纸就是错的</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目一套【待填：户型】曾出现：净层高只有【待填：米】m，中央空调需要【待填：mm】mm 吊顶高度，装不下被迫改方案，返工费用【待填：元】</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">200㎡+ 的量房必量这 3 类（漏一处后面全动）：；① 高度类：净层高、梁底高、挑空边界、窗台高差、空调与吊顶最小净高
+② 位置类：管井、烟道、雨水管、上下水口、地漏、燃气立管、外墙机位、庭院标高；③ 尺寸类：门洞宽高（含门套）、柜体可用净宽、异形柱与墙垛净尺寸、插座离地高
+现场做法：每个尺寸拍照片 + 标注照片 + 画进平面图，三样齐全才算量完</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">本项目【待填：面积】㎡，实测尺寸【待填：数量】项
+高度类【待填：数量】项、位置类【待填：数量】项、尺寸类【待填：数量】项
+发现与原始图纸不符【待填：数量】处，避免返工约【待填：元】元 /【待填：天】天</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">大宅的量房清单和普通住宅不是一份
+收藏这篇，量房前对着查一遍
+评论区扣「量房」，发你一份 200㎡+ 量房清单</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>8 个</small></div><div class="tags"><span>#量房</span><span>#量房流程</span><span>#大平层量房</span><span>#成都装修</span><span>#装修避坑</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 实测【待填：数量】项尺寸，发现与图纸不符【待填：数量】处，避免返工约【待填：元】元。大平层和别墅的量房清单不一样，要清单的评论区扣「量房」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>量房现场 2 张</li><li>量房草图 1 张</li><li>错误对比 1 张（层高 / 梁底 / 窗台）</li><li>尺寸标注实拍 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 尺寸数据须真实标注</li><li>□ 不得提供违法施工建议</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「量房」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周日拍量房现场 → 周一 09:00 写骨架填真实数据</li><li>11:30 排版 8 张</li><li>12:30 发布</li><li>13:30 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<div class="day" id="D30">
+<div class="dh"><h3>D30　320㎡大平层量房：改完多出18㎡</h3><span class="m">周二 12:30　图文</span></div>
+<div class="note" style="margin-bottom:10px"><span class="tag tc">案例｜结果前置型</span><span class="tag ">图文</span><br>核心搜索词：大平层改造、量房、户型改造　｜　长尾：量房发现问题、大平层户型改造、成都大平层设计</div>
+<div class="blk"><div class="bt">标题 3 变体 <small>核心词在前 15 字 · 总长 ≤22 字 · 不放城市名</small></div><ol class="titles">
+<li><b>主用</b>：320㎡大平层量房：改完多出18㎡　<span style="color:var(--muted);font-size:12px">（17 字）</span></li>
+<li><b>变体 A</b>：量房发现的这3个问题，改完多出18㎡　<span style="color:var(--muted);font-size:12px">（18 字）</span></li>
+<li><b>变体 B</b>：大平层量房改造｜面积是量出来的　<span style="color:var(--muted);font-size:12px">（15 字）</span></li>
+</ol></div>
+<div class="blk"><div class="bt">封面大字 <small>首图文字 2 行，每行 ≤9 字</small></div><div class="ct">大平层量房
+改完多出18㎡</div>
+<div class="note" style="margin-top:5px;margin-bottom:0">封面形式：对比图（户型图改造前后）</div></div>
+<div class="blk"><div class="bt">正文逐段骨架 <small>痛点 → 错误案例 → 正确做法 → 真实数据 → 建议收藏；每段 ≤3 行</small></div>
+<div class="seg"><div class="st">痛点</div><div class="sx">大平层的户型本身限制少，所以很多业主以为「没什么好改的」。其实大部分可利用面积，藏在尺寸冲突和被浪费的角落里</div></div>
+<div class="seg"><div class="st">错误案例</div><div class="sx">本项目量房现场发现 3 个问题，业主原方案全部失效：①【待填：问题】②【待填：问题】③【待填：问题】</div></div>
+<div class="seg"><div class="st">正确做法</div><div class="sx">量房阶段就要做的 3 件事：；① 量「不能动的」：结构、梁、管线、烟道、井道，全部标进平面图
+② 量「尺寸冲突」：家具尺寸 vs 门洞 vs 柜门开启位 vs 电梯厅，冲突当场改方案；③ 量「被浪费的」：柱、墙垛、管井背后、挑空下方、楼梯下方——这些是最容易多出面积的地方
+把这 3 处解决掉，再谈风格</div></div>
+<div class="seg hl"><div class="st">真实数据</div><div class="sx">原户型【待填：面积】㎡，改后净使用面积 +【待填：面积】㎡；①【待填：问题及解决方式】
+②【待填：问题及解决方式】；③【待填：问题及解决方式】
+改后平面图与原图对比 1 份；新增面积相当于多出【待填：面积】㎡（相当于多一间【待填：面积】㎡ 的房间）</div></div>
+<div class="seg"><div class="st">收藏引导</div><div class="sx">大平层的面积不是买来的，是量出来的
+收藏这篇，量房前先把「被浪费的角落」找一遍
+评论区扣「户型」，发你你的户型，我帮你看哪里能挖</div></div>
+</div>
+<div class="blk"><div class="bt">标签 <small>7 个</small></div><div class="tags"><span>#量房</span><span>#大平层改造</span><span>#成都大平层</span><span>#成都装修</span><span>#装修灵感库</span><span>#我的装修记录</span><span>#把酒店搬回家</span></div></div>
+<div class="blk"><div class="bt">置顶评论 <small>发布 1 小时内发</small></div><div class="pin">补一条实信息点：这套【待填：面积】㎡ 的面积全是量房时挖出来的。净多【待填：面积】㎡，相当于多出一间【待填：面积】㎡ 的房间。要判断方法，评论区扣「户型」。</div></div>
+<div class="blk"><div class="bt">素材清单 <small>真实工程素材，生成图不得冒充完工实景</small></div><ul class="mat"><li>户型图改造前后 2 张</li><li>量房现场与问题标注 3 张</li><li>改造后实景 2 张</li><li>面积对比表 1 张</li></ul></div>
+<div class="blk"><div class="bt">合规自查 <small>全过才发</small></div><ul class="chk"><li>□ 结构与管线结论须真实基于现场勘察</li><li>□ 不得提供违法拆改建议</li><li>□ 面积数据须与图纸一致</li><li>□ 无微信电话</li><li>□ 标题 ≤22 字且「量房」在前 15 字</li><li>□ 标签 8 个</li><li>□ 已勾选 AI 标识</li></ul></div>
+<div class="blk"><div class="bt">当天流程</div><ul class="flow"><li>周一 09:00 写骨架填真实数据</li><li>11:30 排版 9 张</li><li>12:30 发布</li><li>13:30 置顶评论</li></ul></div>
+<div class="blk"><div class="bt">发布后 24 小时</div><ul class="chk"><li>□ 分享率 = 分享 ÷ 点赞 ≥0.30？（案例类主指标，实测大平层爆款中位 0.45）</li><li>□ 藏赞比 ≥0.5？（攻略/清单类目标）</li><li>□ 互动率 ≥3% → 记进 Top 结构表；&lt;1.5% → 淘汰该方向（不改不删）</li><li>□ 播放 500-1000 且互动率 ≥3% → 投薯条 50 元（定向家装兴趣 + 成都）</li><li>□ 私信 ≥1 条 → 评论区留面积 → 免费户型解析 → 私信 → 量房</li><li>□ 禁止：改封面 / 改正文 / 删笔记 / 换发布时间</li></ul></div>
+<div class="blk"><div class="bt">发布页必须勾选</div><div class="pin">AI 生成 / AI 辅助创作（正文骨架与排版由 AI 协助）</div></div>
+</div>
+<h2 class="sec">七、立刻可做的下一步</h2>
+<ol class="next">
+<li>打开 30 天日历，按 D1→D30 点一遍，标出哪天的真实素材现在拿得出；拿不出的按素材就位顺序重排</li>
+<li>填【待填：接单半径细分】+【待填：真实项目清单 + 授权状态】，我批量替换所有【待填】并重跑校验</li>
+<li>改主页三件套 + 处理旧 4 篇笔记，改完当天发 D1，让新标签覆盖旧标签</li>
+<li>拍 D10 的挑高客厅同机位灯光对比图（开灯/关灯各一张）——这张图决定 D10 能不能立住</li>
+<li>拍 D8 的一镜到底素材（380㎡院子）——视频篇的第一次试错在这两篇</li>
+<li>开始谈手上项目的公开授权：大平层/别墅业主公开意愿低，授权要前置</li></ol>
+<div class="cta"><b>还缺的关键信息（补齐后这套就能直接发）</b><br>
+【待填：接单半径细分】（成都全域 / 高新 / 锦江 / 天府新区 / 麓山 / 桐梓林…）　｜　【待填：客单价区间】；主接【待填：全案 / 仅设计】<br>
+【待填：真实项目清单】面积 / 户型 / 改造前后 / 预算 / 关键数字 / 业主原话　｜　【待填：业主授权状态】　｜　【待填：是否真人出镜】<br>
+【待填：可接受获客成本】　｜　【待填：薯条日预算上限】</div>
+<footer>
+本文件为单文件离线版，内嵌全部内容，不依赖任何外部资源，可直接转发或打印成 PDF。<br>
+所有数字均为目标线或既有公开资料摘录；未编造项目、业主、预算、城市、粉丝数与赞藏数据。缺失项统一以【待填：XX】标注。<br>
+小红书平台规则与对标账号数据会变化，发布前请以创作者中心后台与小红书规则中心为准。
+</footer></div></body></html>
